@@ -1,0 +1,53 @@
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+
+.article-edit {
+  &-container {
+    padding: vars.$spacing-lg 0;
+  }
+  
+  &-header {
+    margin-bottom: vars.$spacing-lg;
+  }
+  
+  &-title {
+    margin: 0;
+    font-size: vars.$font-size-xl;
+    color: vars.$text-primary;
+    font-weight: 600;
+  }
+  
+  &-card {
+    margin-bottom: vars.$spacing-lg;
+  }
+  
+  &-cover-preview {
+    margin-top: vars.$spacing-sm;
+    max-width: 300px;
+    
+    img {
+      width: 100%;
+      border-radius: vars.$border-radius-sm;
+      border: 1px solid vars.$border-light;
+    }
+  }
+  
+  &-tags-container {
+    @include mix.flex(row, flex-start, center, wrap);
+    gap: vars.$spacing-sm;
+  }
+  
+  &-tag-item {
+    margin-right: vars.$spacing-xs;
+  }
+  
+  &-tag-input {
+    width: 200px;
+    
+    @include mix.respond-to(sm) {
+      width: 100%;
+      margin-top: vars.$spacing-sm;
+    }
+  }
+} 

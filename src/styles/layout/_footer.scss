@@ -1,0 +1,64 @@
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+
+.site-footer {
+  background-color: vars.$bg-white;
+  border-top: 1px solid vars.$border-light;
+  padding: vars.$spacing-md 0;
+  margin-top: auto;
+  
+  &__content {
+    @include mix.container;
+    
+    & {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    @include mix.respond-to(sm) {
+      flex-direction: column;
+      text-align: center;
+      gap: vars.$spacing-md;
+    }
+    
+    p {
+      color: vars.$text-secondary;
+      font-size: vars.$font-size-sm;
+      margin: 0;
+    }
+  }
+  
+  &__links {
+    display: flex;
+    gap: vars.$spacing-md;
+    
+    @include mix.respond-to(sm) {
+      justify-content: center;
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: vars.$border-radius-circle;
+      color: vars.$text-secondary;
+      background-color: vars.$bg-light;
+      transition: vars.$transition-base;
+      
+      &:hover {
+        color: vars.$bg-white;
+        background-color: vars.$primary-color;
+        transform: translateY(-3px);
+        box-shadow: vars.$shadow-sm;
+      }
+      
+      .el-icon {
+        font-size: 18px;
+      }
+    }
+  }
+} 

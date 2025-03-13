@@ -1,0 +1,132 @@
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+@use "sass:map";
+
+.site-header {
+  background-color: vars.$bg-white;
+  box-shadow: vars.$shadow-sm;
+  padding: 0;
+  min-height: theme.$nav-height;
+  position: sticky;
+  top: 0;
+  z-index: vars.$z-index-sticky;
+  
+  &__content {
+    @include mix.container;
+    
+    & {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 vars.$spacing-lg;
+      flex-wrap: wrap;
+    }
+    
+    @include mix.respond-to(md) {
+      padding: 0 vars.$spacing-md;
+    }
+    
+    @include mix.respond-to(sm) {
+      padding: vars.$spacing-sm;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  &__logo {
+    font-family: vars.$font-family-heading;
+    font-weight: vars.$font-weight-bold;
+    font-size: vars.$font-size-lg;
+    color: vars.$primary-color;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    padding: vars.$spacing-md 0;
+    display: block;
+    
+    &:hover {
+      color: vars.$primary-light;
+      text-decoration: none;
+    }
+    
+    @include mix.respond-to(sm) {
+      font-size: vars.$font-size-md;
+      padding: vars.$spacing-sm 0;
+      text-align: center;
+      margin-bottom: vars.$spacing-sm;
+    }
+  }
+  
+  &__nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    
+    .main-menu {
+      border-bottom: none !important;
+      background-color: transparent;
+      
+      .el-menu-item {
+        font-size: vars.$font-size-md;
+        height: theme.$nav-height;
+        line-height: theme.$nav-height;
+        padding: 0 vars.$spacing-xl;
+        font-weight: vars.$font-weight-medium;
+        
+        &.is-active {
+          border-bottom-color: vars.$primary-color;
+          color: vars.$primary-color;
+          font-weight: vars.$font-weight-semibold;
+          position: relative;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background-color: vars.$primary-color;
+            border-radius: vars.$border-radius-pill vars.$border-radius-pill 0 0;
+          }
+        }
+        
+        &:hover {
+          color: vars.$primary-light;
+        }
+        
+        @include mix.respond-to(md) {
+          padding: 0 vars.$spacing-md;
+          font-size: vars.$font-size-base;
+        }
+        
+        @include mix.respond-to(sm) {
+          height: 50px;
+          line-height: 50px;
+          padding: 0 vars.$spacing-md;
+          font-size: vars.$font-size-sm;
+          
+          &.is-active::after {
+            width: 60%;
+            left: 20%;
+            height: 2px;
+          }
+        }
+      }
+      
+      @include mix.respond-to(sm) {
+        width: 100%;
+        
+        .el-menu-item {
+          flex: 1;
+          text-align: center;
+          padding: 0 vars.$spacing-xs;
+        }
+      }
+    }
+    
+    @include mix.respond-to(sm) {
+      width: 100%;
+    }
+  }
+} 

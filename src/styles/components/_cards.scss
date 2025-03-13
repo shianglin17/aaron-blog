@@ -1,0 +1,177 @@
+// 卡片組件樣式
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+
+// 基礎卡片樣式
+.card {
+  background-color: theme.$card-bg;
+  border-radius: theme.$card-border-radius;
+  padding: theme.$card-padding;
+  overflow: hidden;
+  box-shadow: theme.$shadow-default;
+  transition: theme.$transition-default;
+  
+  &:hover {
+    box-shadow: theme.$shadow-hover;
+    transform: translateY(-4px);
+  }
+  
+  &--flat {
+    box-shadow: none;
+    border: theme.$border-default;
+    
+    &:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: vars.$primary-light;
+    }
+  }
+  
+  &--hover {
+    &:hover {
+      transform: translateY(-6px);
+    }
+  }
+  
+  &--gradient {
+    background-image: vars.$gradient-primary;
+    color: vars.$bg-white;
+  }
+  
+  &__header {
+    margin-bottom: vars.$spacing-md;
+    padding-bottom: vars.$spacing-sm;
+    border-bottom: theme.$border-width theme.$border-style vars.$border-light;
+  }
+  
+  &__title {
+    font-size: vars.$font-size-lg;
+    font-weight: vars.$font-weight-semibold;
+    margin: 0;
+    letter-spacing: -0.025em;
+    
+    @include mix.text-truncate(2);
+  }
+  
+  &__body {
+    margin-bottom: vars.$spacing-md;
+  }
+  
+  &__footer {
+    margin-top: auto;
+    padding-top: vars.$spacing-sm;
+    border-top: theme.$border-width theme.$border-style vars.$border-light;
+  }
+  
+  // 響應式調整
+  @include mix.respond-to(sm) {
+    padding: vars.$spacing-md;
+    
+    &__header {
+      margin-bottom: vars.$spacing-sm;
+    }
+    
+    &__title {
+      font-size: vars.$font-size-base;
+    }
+  }
+}
+
+// 文章卡片特定樣式
+.article-card {
+  height: theme.$article-card-height;
+  border-radius: theme.$article-card-radius;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: theme.$shadow-default;
+  transition: theme.$transition-default;
+  display: flex;
+  flex-direction: column;
+  
+  &:hover {
+    box-shadow: theme.$shadow-hover;
+    transform: theme.$article-card-transform-hover;
+  }
+  
+  &__image {
+    height: theme.$article-image-height;
+    object-fit: cover;
+    border-radius: theme.$article-image-radius;
+    
+    @include mix.respond-to(sm) {
+      height: 180px;
+    }
+    
+    @include mix.respond-to(xs) {
+      height: 160px;
+    }
+  }
+  
+  &__content {
+    padding: vars.$spacing-lg;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+    @include mix.respond-to(sm) {
+      padding: vars.$spacing-md;
+    }
+  }
+  
+  &__title {
+    font-size: vars.$font-size-lg;
+    font-weight: vars.$font-weight-semibold;
+    margin: 0 0 vars.$spacing-sm 0;
+    color: vars.$text-primary;
+    letter-spacing: -0.025em;
+    
+    @include mix.text-truncate(theme.$article-title-lines);
+    
+    @include mix.respond-to(sm) {
+      font-size: vars.$font-size-base;
+    }
+  }
+  
+  &__meta {
+    font-size: vars.$font-size-sm;
+    color: vars.$text-light;
+    margin-bottom: vars.$spacing-sm;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    
+    .icon {
+      margin-right: vars.$spacing-xs;
+    }
+  }
+  
+  &__summary {
+    font-size: vars.$font-size-base;
+    color: vars.$text-secondary;
+    margin-bottom: vars.$spacing-md;
+    flex: 1;
+    
+    @include mix.text-truncate(theme.$article-summary-lines);
+    
+    @include mix.respond-to(sm) {
+      font-size: vars.$font-size-sm;
+      margin-bottom: vars.$spacing-sm;
+    }
+  }
+  
+  &__action {
+    margin-top: auto;
+    align-self: flex-start;
+    
+    .icon {
+      margin-left: vars.$spacing-xs;
+      transition: transform 0.2s ease;
+    }
+    
+    &:hover .icon {
+      transform: translateX(6px);
+    }
+  }
+} 

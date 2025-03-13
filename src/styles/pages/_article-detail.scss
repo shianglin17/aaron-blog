@@ -1,0 +1,83 @@
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+
+.article-detail {
+  &-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: vars.$spacing-lg 0;
+  }
+  
+  &-title {
+    font-size: vars.$font-size-xxxl;
+    color: vars.$text-primary;
+    margin-bottom: vars.$spacing-lg;
+    font-weight: 700;
+    line-height: 1.3;
+    
+    @include mix.respond-to(sm) {
+      font-size: vars.$font-size-xxl;
+    }
+  }
+  
+  &-meta {
+    margin-bottom: vars.$spacing-xl;
+    padding-bottom: vars.$spacing-lg;
+    border-bottom: 1px solid vars.$border-light;
+    @include mix.flex(row, flex-start, center, wrap);
+    gap: vars.$spacing-md;
+  }
+  
+  &-author, &-date {
+    color: vars.$text-light;
+    font-size: vars.$font-size-sm;
+  }
+  
+  &-tags {
+    @include mix.flex(row, flex-start, center, wrap);
+    gap: vars.$spacing-xs;
+  }
+  
+  &-tag {
+    margin-right: vars.$spacing-xs;
+  }
+  
+  &-body {
+    line-height: 1.8;
+    color: vars.$text-primary;
+    
+    h2 {
+      margin: vars.$spacing-xl 0 vars.$spacing-md;
+      font-size: vars.$font-size-xl;
+      color: vars.$text-primary;
+      font-weight: 600;
+    }
+    
+    p {
+      margin-bottom: vars.$spacing-md;
+    }
+    
+    pre {
+      background-color: #f5f7fa;
+      padding: vars.$spacing-md;
+      border-radius: vars.$border-radius-sm;
+      overflow-x: auto;
+      margin: vars.$spacing-md 0;
+    }
+    
+    code {
+      font-family: monospace;
+    }
+  }
+  
+  &-loading, &-error {
+    padding: vars.$spacing-xxl 0;
+  }
+  
+  @include mix.respond-to(sm) {
+    &-container {
+      padding: vars.$spacing-md;
+    }
+  }
+} 

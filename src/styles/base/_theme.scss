@@ -1,0 +1,134 @@
+/**
+ * 主題配置文件
+ * 定義主題相關的配置，包括元件尺寸、顏色映射等
+ */
+
+// 主題樣式變量
+// 引入變量
+@use './variables' as vars;
+@use 'sass:map';
+
+// 全局主題設定
+$border-width: 1px;
+$border-style: solid;
+$border-default: $border-width $border-style vars.$border-color;
+$border-radius-default: vars.$border-radius-md;
+
+// 陰影效果
+$shadow-default: vars.$shadow-sm;
+$shadow-hover: vars.$shadow-md;
+$shadow-active: vars.$shadow-lg;
+
+// 過渡效果
+$transition-default: vars.$transition-base;
+$transition-hover: vars.$transition-fast;
+
+// 容器配置
+$container-padding: vars.$spacing-lg;
+$container-padding-sm: vars.$spacing-md;
+
+// 斷點配置（從大到小）
+$breakpoints: (
+  xl: vars.$breakpoint-xl,  // 超大屏幕 (≤1400px)
+  lg: vars.$breakpoint-lg,  // 大屏幕 (≤1200px)
+  md: vars.$breakpoint-md,  // 中等屏幕 (≤992px)
+  sm: vars.$breakpoint-sm,  // 小屏幕 (≤768px)
+  xs: vars.$breakpoint-xs   // 超小屏幕 (≤576px)
+);
+
+// 頁面標題配置
+$page-title-font-size: vars.$font-size-xxl;
+$page-title-margin: 0 0 vars.$spacing-xl 0;
+$page-title-indicator-width: 80px;
+$page-title-indicator-height: 4px;
+
+// 導航配置
+$nav-height: 64px;
+$nav-item-padding: 0 vars.$spacing-lg;
+$nav-indicator-width: 80%;
+$nav-indicator-height: 3px;
+$nav-indicator-radius: vars.$border-radius-pill vars.$border-radius-pill 0 0;
+
+// 頁腳配置
+$footer-padding: vars.$spacing-md 0;
+$footer-link-gap: vars.$spacing-md;
+
+// 卡片配置
+$card-padding: vars.$spacing-lg;
+$card-margin: 0 0 vars.$spacing-lg 0;
+$card-border-radius: vars.$border-radius-md;
+$card-bg: vars.$bg-white;
+
+// 按鈕配置
+$button-border-radius: vars.$border-radius-md;
+$button-padding-sm: vars.$spacing-xs vars.$spacing-md;
+$button-padding-md: vars.$spacing-sm vars.$spacing-lg;
+$button-padding-lg: vars.$spacing-md vars.$spacing-xl;
+$button-transition: vars.$transition-fast;
+
+// 文章卡片配置
+$article-card-height: 100%;
+$article-card-radius: vars.$border-radius-md;
+$article-card-transform-hover: translateY(-6px);
+$article-image-height: 220px;
+$article-image-radius: vars.$border-radius-md vars.$border-radius-md 0 0;
+$article-title-lines: 2;
+$article-summary-lines: 3;
+$article-card-meta-margin: vars.$spacing-xs 0 vars.$spacing-md;
+
+// 文章詳情配置
+$article-detail-width: 800px;
+$article-detail-image-height: 400px;
+$article-detail-content-margin: vars.$spacing-lg 0;
+
+// 後台配置
+$admin-sidebar-width: 240px;
+$admin-sidebar-collapsed-width: 80px;
+$admin-sidebar-transition: width 0.3s ease-in-out;
+$admin-content-padding: vars.$spacing-lg;
+
+// 組件尺寸映射
+$sizes: (
+  xs: vars.$spacing-xs,
+  sm: vars.$spacing-sm,
+  md: vars.$spacing-md,
+  lg: vars.$spacing-lg,
+  xl: vars.$spacing-xl
+);
+
+// 顏色映射
+$colors: (
+  primary: vars.$primary-color,
+  primary-light: vars.$primary-light,
+  primary-dark: vars.$primary-dark,
+  secondary: vars.$secondary-color,
+  secondary-light: vars.$secondary-light,
+  secondary-dark: vars.$secondary-dark,
+  success: vars.$success-color,
+  warning: vars.$warning-color,
+  danger: vars.$danger-color,
+  info: vars.$info-color,
+  white: vars.$bg-white,
+  light: vars.$bg-light,
+  dark: vars.$bg-dark,
+  darker: vars.$bg-darker
+);
+
+// 文字顏色映射
+$text-colors: (
+  primary: vars.$text-primary,
+  secondary: vars.$text-secondary,
+  light: vars.$text-light,
+  white: vars.$bg-white
+);
+
+// z-index 層級映射
+$z-indexes: (
+  dropdown: vars.$z-index-dropdown,
+  sticky: vars.$z-index-sticky,
+  fixed: vars.$z-index-fixed,
+  modal-backdrop: vars.$z-index-modal-backdrop,
+  modal: vars.$z-index-modal,
+  popover: vars.$z-index-popover,
+  tooltip: vars.$z-index-tooltip
+); 

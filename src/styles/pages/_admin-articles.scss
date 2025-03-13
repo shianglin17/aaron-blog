@@ -1,0 +1,48 @@
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+
+.articles-manage {
+  &-container {
+    padding: vars.$spacing-lg 0;
+  }
+  
+  &-header {
+    @include mix.flex(row, space-between, center);
+    margin-bottom: vars.$spacing-lg;
+    
+    @include mix.respond-to(sm) {
+      @include mix.flex(column, flex-start, flex-start);
+      gap: vars.$spacing-sm;
+    }
+  }
+  
+  &-title {
+    margin: 0;
+    font-size: vars.$font-size-xl;
+    color: vars.$text-primary;
+    font-weight: 600;
+  }
+  
+  &-filter-card {
+    margin-bottom: vars.$spacing-lg;
+  }
+  
+  &-search-form {
+    @include mix.flex(row, flex-start, center, wrap);
+    
+    @include mix.respond-to(sm) {
+      @include mix.flex(column, flex-start, stretch);
+      width: 100%;
+    }
+  }
+  
+  &-table-card {
+    margin-bottom: vars.$spacing-lg;
+  }
+  
+  &-pagination {
+    margin-top: vars.$spacing-lg;
+    @include mix.flex(row, flex-end, center);
+  }
+} 

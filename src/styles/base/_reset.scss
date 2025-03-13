@@ -1,0 +1,237 @@
+/**
+ * 重置樣式文件
+ * 重置瀏覽器默認樣式以保持一致性
+ */
+
+@use 'variables' as vars;
+
+// 全局重置
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: vars.$font-family-base;
+  font-size: vars.$font-size-base;
+  color: vars.$text-primary;
+  background-color: vars.$bg-light;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// 移除列表樣式
+ul, ol {
+  list-style: none;
+}
+
+// 超連結樣式
+a {
+  text-decoration: none;
+  color: vars.$primary-color;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: vars.$primary-light;
+  }
+}
+
+// 標題樣式重置
+h1, h2, h3, h4, h5, h6 {
+  font-family: vars.$font-family-heading;
+  font-weight: vars.$font-weight-bold;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  color: vars.$text-primary;
+}
+
+// 圖片樣式重置
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// 表單樣式重置
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+// 清除浮動
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+:root {
+  -moz-tab-size: 4;
+  tab-size: 4;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+  cursor: pointer;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+h1 {
+  font-size: vars.$font-size-xxxl;
+  font-weight: vars.$font-weight-bold;
+}
+
+h2 {
+  font-size: vars.$font-size-xxl;
+}
+
+h3 {
+  font-size: vars.$font-size-xl;
+}
+
+h4 {
+  font-size: vars.$font-size-lg;
+}
+
+h5 {
+  font-size: vars.$font-size-base;
+}
+
+h6 {
+  font-size: vars.$font-size-sm;
+}
+
+p {
+  margin-bottom: vars.$spacing-md;
+}
+
+ul, ol {
+  margin-bottom: vars.$spacing-md;
+  padding-left: vars.$spacing-xl;
+}
+
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: vars.$bg-dark;
+  color: vars.$bg-light;
+  border-radius: vars.$border-radius-md;
+  padding: vars.$spacing-md;
+  overflow-x: auto;
+  margin-bottom: vars.$spacing-md;
+}
+
+code {
+  background-color: rgba(vars.$primary-color, 0.1);
+  color: vars.$primary-dark;
+  padding: 0.2em 0.4em;
+  border-radius: vars.$border-radius-sm;
+}
+
+blockquote {
+  border-left: 3px solid vars.$primary-color;
+  padding: vars.$spacing-md vars.$spacing-lg;
+  margin: vars.$spacing-lg 0;
+  background-color: rgba(vars.$primary-color, 0.05);
+  border-radius: 0 vars.$border-radius-md vars.$border-radius-md 0;
+  color: vars.$text-secondary;
+  font-style: italic;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid vars.$border-color;
+  margin: vars.$spacing-lg 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: vars.$spacing-lg;
+}
+
+th, td {
+  padding: vars.$spacing-sm vars.$spacing-md;
+  border-bottom: 1px solid vars.$border-light;
+  text-align: left;
+}
+
+th {
+  font-weight: vars.$font-weight-semibold;
+  background-color: vars.$bg-light;
+}
+
+/* 移除 iOS 上的默認樣式 */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="week"],
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+} 

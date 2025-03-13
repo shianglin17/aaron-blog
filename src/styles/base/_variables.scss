@@ -1,0 +1,100 @@
+// 顏色系統 - 新的配色方案
+$primary-color: #3b82f6;      // 藍色
+$primary-light: #60a5fa;
+$primary-dark: #2563eb;
+
+$secondary-color: #8b5cf6;    // 紫色
+$secondary-light: #a78bfa;
+$secondary-dark: #7c3aed;
+
+$success-color: #10b981;      // 綠色
+$warning-color: #f59e0b;      // 橙色
+$danger-color: #ef4444;       // 紅色
+$info-color: #06b6d4;         // 青色
+
+$text-primary: #1e293b;       // 深藍灰
+$text-secondary: #475569;     // 中藍灰
+$text-light: #94a3b8;         // 淺藍灰
+
+$bg-light: #f8fafc;           // 非常淺的藍灰
+$bg-white: #ffffff;           // 白色
+$bg-dark: #0f172a;            // 深藍黑
+$bg-darker: #020617;          // 更深的藍黑
+
+$border-color: #e2e8f0;       // 淺藍灰
+$border-light: #f1f5f9;       // 更淺的藍灰
+$border-dark: #cbd5e1;        // 中藍灰
+
+// 字體
+$font-family-base: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-heading: 'Montserrat', 'Noto Serif TC', Georgia, 'Times New Roman', serif;
+
+// 字體粗細
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// 字體大小 - 更現代的比例
+$font-size-base: 16px;
+$font-size-sm: 14px;
+$font-size-xs: 12px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 24px;
+$font-size-xxl: 30px;
+$font-size-xxxl: 36px;
+
+// 間距 - 更一致的比例
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// 圓角 - 更現代的圓角
+$border-radius-sm: 6px;
+$border-radius-md: 12px;
+$border-radius-lg: 16px;
+$border-radius-circle: 50%;
+$border-radius-pill: 9999px;
+
+// 陰影 - 更柔和的陰影
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05), 0 4px 6px rgba(0, 0, 0, 0.1);
+
+// 斷點
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1400px;
+
+// 容器寬度
+$container-width: 1200px;
+
+// 過渡 - 更平滑的過渡
+$transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Z-index 層級
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// 引入 Sass 的 color 模組
+@use "sass:color";
+
+// 漸變色 - 更現代的漸變
+$gradient-primary: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: 15%, $hue: 10deg));
+$gradient-secondary: linear-gradient(135deg, $secondary-color, color.adjust($secondary-color, $lightness: 15%, $hue: 10deg));
+$gradient-success: linear-gradient(135deg, $success-color, color.adjust($success-color, $lightness: 15%, $hue: 10deg));
+$gradient-info: linear-gradient(135deg, $info-color, color.adjust($info-color, $lightness: 15%, $hue: 10deg)); 

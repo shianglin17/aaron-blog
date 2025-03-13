@@ -1,0 +1,188 @@
+// 響應式混合器
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use "sass:map";
+
+// 媒體查詢混合器
+@mixin respond-to($breakpoint) {
+  @if map.has-key(theme.$breakpoints, $breakpoint) {
+    @media (max-width: map.get(theme.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "未知的斷點: #{$breakpoint}。可用的斷點有: #{map.keys(theme.$breakpoints)}";
+  }
+}
+
+// 最小寬度媒體查詢
+@mixin respond-from($breakpoint) {
+  @if map.has-key(theme.$breakpoints, $breakpoint) {
+    @media (min-width: map.get(theme.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "未知的斷點: #{$breakpoint}。可用的斷點有: #{map.keys(theme.$breakpoints)}";
+  }
+}
+
+// 介於兩個斷點之間的媒體查詢
+@mixin respond-between($min, $max) {
+  @if map.has-key(theme.$breakpoints, $min) and map.has-key(theme.$breakpoints, $max) {
+    @media (min-width: map.get(theme.$breakpoints, $min)) and (max-width: map.get(theme.$breakpoints, $max)) {
+      @content;
+    }
+  } @else {
+    @error "未知的斷點: #{$min} 或 #{$max}。可用的斷點有: #{map.keys(theme.$breakpoints)}";
+  }
+}
+
+// 容器混合器
+@mixin container {
+  & {
+    max-width: vars.$container-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: theme.$container-padding;
+    padding-right: theme.$container-padding;
+  }
+  
+  @include respond-to(sm) {
+    & {
+      padding-left: vars.$spacing-md;
+      padding-right: vars.$spacing-md;
+    }
+  }
+}
+
+// Flex 佈局混合器
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+// 文本截斷混合器
+@mixin text-truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// 陰影混合器
+@mixin shadow($level: default) {
+  & {
+    @if $level == default {
+      box-shadow: theme.$shadow-default;
+    } @else if $level == hover {
+      box-shadow: theme.$shadow-hover;
+    } @else if $level == active {
+      box-shadow: theme.$shadow-active;
+    }
+  }
+}
+
+// 過渡混合器
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+  & {
+    transition: $property $duration $timing;
+  }
+}
+
+// 絕對定位混合器
+@mixin absolute($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// 固定寬高比例混合器
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    display: block;
+    padding-top: ($height / $width) * 100%;
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// 網格系統混合器
+@mixin grid($columns: 12, $gap: vars.$spacing-md) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// 響應式網格列混合器
+@mixin grid-column($span: 1, $start: auto) {
+  grid-column: $start / span $span;
+}
+
+// 絕對定位居中
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 卡片樣式
+@mixin card($padding: vars.$spacing-md, $radius: vars.$border-radius-md, $shadow: vars.$shadow-md) {
+  background-color: vars.$bg-white;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  padding: $padding;
+}
+
+// 按鈕樣式
+@mixin button-style($bg-color, $text-color, $hover-bg-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  border-radius: vars.$border-radius-sm;
+  padding: vars.$spacing-sm vars.$spacing-md;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  
+  &:hover {
+    background-color: $hover-bg-color;
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+// 漸變背景
+@mixin gradient-bg($start-color, $end-color, $direction: to right) {
+  background: linear-gradient($direction, $start-color, $end-color);
+}
+
+// 清除浮動
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+} 

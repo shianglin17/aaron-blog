@@ -1,0 +1,223 @@
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+
+.dashboard {
+  &-container {
+    padding: vars.$spacing-lg 0;
+    width: 100%;
+  }
+  
+  &-title {
+    margin-bottom: vars.$spacing-lg;
+    font-size: vars.$font-size-xl;
+    color: vars.$text-primary;
+    font-weight: vars.$font-weight-semibold;
+    
+    @include mix.respond-to(sm) {
+      font-size: vars.$font-size-lg;
+      margin-bottom: vars.$spacing-md;
+    }
+  }
+  
+  &-stat-card {
+    @include mix.flex(row, flex-start, center);
+    margin-bottom: vars.$spacing-md;
+    height: 100%;
+    padding: vars.$spacing-lg vars.$spacing-md;
+    background-color: vars.$bg-white;
+    border-radius: vars.$border-radius-md;
+    box-shadow: vars.$shadow-sm;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: vars.$shadow-md;
+    }
+    
+    @include mix.respond-to(sm) {
+      margin-bottom: vars.$spacing-md;
+      padding: vars.$spacing-md;
+    }
+    
+    @include mix.respond-to(xs) {
+      flex-direction: column;
+      text-align: center;
+      padding: vars.$spacing-sm;
+    }
+  }
+  
+  &-stat-icon {
+    font-size: 2.5rem;
+    color: vars.$primary-color;
+    margin-right: vars.$spacing-md;
+    
+    .el-icon {
+      font-size: 2.5rem;
+    }
+    
+    @include mix.respond-to(xs) {
+      margin-right: 0;
+      margin-bottom: vars.$spacing-sm;
+      
+      .el-icon {
+        font-size: 2rem;
+      }
+    }
+  }
+  
+  &-stat-info {
+    display: flex;
+    flex-direction: column;
+    
+    @include mix.respond-to(xs) {
+      align-items: center;
+    }
+  }
+  
+  &-stat-value {
+    font-size: vars.$font-size-xxl;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$text-primary;
+    margin-bottom: vars.$spacing-xs;
+    line-height: 1.2;
+    
+    @include mix.respond-to(sm) {
+      font-size: vars.$font-size-xl;
+    }
+    
+    @include mix.respond-to(xs) {
+      font-size: vars.$font-size-lg;
+    }
+  }
+  
+  &-stat-label {
+    font-size: vars.$font-size-sm;
+    color: vars.$text-light;
+  }
+  
+  &-row {
+    margin-top: vars.$spacing-lg;
+    
+    @include mix.respond-to(xs) {
+      margin-top: vars.$spacing-md;
+    }
+  }
+  
+  &-card-header {
+    @include mix.flex(row, space-between, center);
+    padding: vars.$spacing-md;
+    border-bottom: 1px solid vars.$border-light;
+    
+    span {
+      font-weight: vars.$font-weight-semibold;
+      color: vars.$text-primary;
+    }
+    
+    @include mix.respond-to(xs) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: vars.$spacing-sm;
+      
+      .el-radio-group {
+        margin-top: vars.$spacing-xs;
+      }
+    }
+  }
+  
+  &-chart {
+    height: 300px;
+    @include mix.flex(column, center, center);
+    background-color: vars.$bg-light;
+    border-radius: vars.$border-radius-sm;
+    
+    &-text {
+      font-size: vars.$font-size-lg;
+      color: vars.$text-light;
+      margin-bottom: vars.$spacing-sm;
+    }
+    
+    &-desc {
+      font-size: vars.$font-size-sm;
+      color: vars.$text-light;
+    }
+    
+    @include mix.respond-to(sm) {
+      height: 200px;
+    }
+  }
+  
+  &-chart-card,
+  &-recent-card {
+    height: 100%;
+    margin-bottom: vars.$spacing-lg;
+    background-color: vars.$bg-white;
+    border-radius: vars.$border-radius-md;
+    box-shadow: vars.$shadow-sm;
+    
+    .el-card__body {
+      padding: vars.$spacing-md;
+    }
+    
+    @include mix.respond-to(xs) {
+      margin-bottom: vars.$spacing-md;
+      
+      .el-card__body {
+        padding: vars.$spacing-sm;
+      }
+    }
+  }
+  
+  &-article-meta {
+    font-size: vars.$font-size-xs;
+    color: vars.$text-light;
+    margin-top: vars.$spacing-xs;
+    @include mix.flex(row, flex-start, center);
+    gap: vars.$spacing-md;
+    
+    @include mix.respond-to(xs) {
+      gap: vars.$spacing-sm;
+      flex-wrap: wrap;
+    }
+  }
+  
+  &-view-more {
+    text-align: center;
+    margin-top: vars.$spacing-md;
+    
+    @include mix.respond-to(xs) {
+      margin-top: vars.$spacing-sm;
+    }
+  }
+}
+
+// 確保 Element Plus 卡片在後台中的樣式正確
+.el-card {
+  &.dashboard-stat-card {
+    overflow: visible;
+    
+    .el-card__body {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      
+      @include mix.respond-to(xs) {
+        flex-direction: column;
+        padding: vars.$spacing-sm;
+      }
+    }
+  }
+  
+  &.dashboard-chart-card,
+  &.dashboard-recent-card {
+    .el-card__header {
+      padding: vars.$spacing-md;
+      
+      @include mix.respond-to(xs) {
+        padding: vars.$spacing-sm;
+      }
+    }
+  }
+} 

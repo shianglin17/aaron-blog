@@ -1,0 +1,80 @@
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+
+.articles {
+  &-container {
+    padding: vars.$spacing-lg 0;
+  }
+  
+  &-title {
+    margin-bottom: vars.$spacing-xl;
+    font-size: vars.$font-size-xxl;
+    color: vars.$text-primary;
+    font-weight: 700;
+  }
+  
+  &-col {
+    margin-bottom: vars.$spacing-lg;
+  }
+  
+  &-card {
+    height: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border-radius: vars.$border-radius-md;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: vars.$shadow-lg;
+    }
+  }
+  
+  &-cover {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: vars.$border-radius-md;
+    border-top-right-radius: vars.$border-radius-md;
+    transition: transform 0.5s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    @include mix.respond-to(sm) {
+      height: 180px;
+    }
+  }
+  
+  &-info {
+    padding: vars.$spacing-lg;
+  }
+  
+  &-title {
+    margin: 0 0 vars.$spacing-sm;
+    font-size: vars.$font-size-lg;
+    font-weight: 600;
+    color: vars.$text-primary;
+    @include mix.text-truncate(2);
+  }
+  
+  &-date {
+    font-size: vars.$font-size-sm;
+    color: vars.$text-light;
+    margin-bottom: vars.$spacing-sm;
+    display: block;
+  }
+  
+  &-summary {
+    color: vars.$text-secondary;
+    margin-bottom: vars.$spacing-md;
+    @include mix.text-truncate(3);
+  }
+  
+  &-loading, &-empty {
+    padding: vars.$spacing-xxl 0;
+    text-align: center;
+  }
+} 

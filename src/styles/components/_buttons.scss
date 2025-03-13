@@ -1,0 +1,261 @@
+// 按鈕組件樣式
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+@use "sass:color";
+
+// 基礎按鈕樣式
+.btn {
+  padding: theme.$button-padding-md;
+  border-radius: theme.$button-border-radius;
+  font-weight: vars.$font-weight-medium;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: theme.$transition-default;
+  
+  // 尺寸變體
+  &--sm {
+    padding: theme.$button-padding-sm;
+    font-size: vars.$font-size-sm;
+  }
+  
+  &--lg {
+    padding: theme.$button-padding-lg;
+    font-size: vars.$font-size-lg;
+  }
+  
+  // 顏色變體
+  &--primary {
+    background-color: vars.$primary-color;
+    color: vars.$bg-white;
+    
+    &:hover, &:focus {
+      background-color: vars.$primary-light;
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &--secondary {
+    background-color: vars.$secondary-color;
+    color: vars.$bg-white;
+    
+    &:hover, &:focus {
+      background-color: vars.$secondary-light;
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &--success {
+    background-color: vars.$success-color;
+    color: vars.$bg-white;
+    
+    &:hover, &:focus {
+      background-color: color.adjust(vars.$success-color, $lightness: 10%);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &--danger {
+    background-color: vars.$danger-color;
+    color: vars.$bg-white;
+    
+    &:hover, &:focus {
+      background-color: color.adjust(vars.$danger-color, $lightness: 10%);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &--outline {
+    background-color: transparent;
+    border: theme.$border-width theme.$border-style currentColor;
+    
+    &.btn--primary {
+      color: vars.$primary-color;
+      
+      &:hover, &:focus {
+        background-color: rgba(vars.$primary-color, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      &:active {
+        transform: translateY(0);
+      }
+    }
+    
+    &.btn--secondary {
+      color: vars.$secondary-color;
+      
+      &:hover, &:focus {
+        background-color: rgba(vars.$secondary-color, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+  
+  &--text {
+    background-color: transparent;
+    color: vars.$primary-color;
+    padding: vars.$spacing-xs vars.$spacing-sm;
+    
+    &:hover, &:focus {
+      background-color: rgba(vars.$primary-color, 0.05);
+      color: vars.$primary-dark;
+    }
+  }
+  
+  &--icon {
+    .icon {
+      margin-right: vars.$spacing-xs;
+      transition: transform 0.2s ease;
+    }
+    
+    &.btn--icon-right {
+      .icon {
+        margin-right: 0;
+        margin-left: vars.$spacing-xs;
+      }
+    }
+    
+    &.btn--icon-only {
+      padding: vars.$spacing-sm;
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+      
+      .icon {
+        margin: 0;
+      }
+    }
+    
+    &:hover .icon {
+      transform: translateX(2px);
+    }
+    
+    &.btn--icon-right:hover .icon {
+      transform: translateX(2px);
+    }
+  }
+  
+  &--block {
+    display: flex;
+    width: 100%;
+  }
+  
+  &--rounded {
+    border-radius: vars.$border-radius-pill;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  // 響應式調整
+  @include mix.respond-to(sm) {
+    padding: vars.$spacing-xs vars.$spacing-md;
+    font-size: vars.$font-size-sm;
+    
+    &--lg {
+      padding: vars.$spacing-sm vars.$spacing-lg;
+      font-size: vars.$font-size-base;
+    }
+    
+    &--sm {
+      padding: vars.$spacing-xs vars.$spacing-sm;
+      font-size: vars.$font-size-xs;
+    }
+  }
+}
+
+// Element Plus 按鈕樣式覆蓋
+.el-button {
+  border-radius: theme.$button-border-radius;
+  font-weight: vars.$font-weight-medium;
+  transition: theme.$transition-default;
+  
+  &--primary {
+    background-color: vars.$primary-color;
+    border-color: vars.$primary-color;
+    
+    &:hover, &:focus {
+      background-color: vars.$primary-light;
+      border-color: vars.$primary-light;
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &--text {
+    &:hover, &:focus {
+      color: vars.$primary-light;
+      background-color: rgba(vars.$primary-color, 0.05);
+    }
+  }
+  
+  .el-icon {
+    margin-right: vars.$spacing-xs;
+    transition: transform 0.2s ease;
+    
+    & + span {
+      margin-left: 0;
+    }
+  }
+  
+  &:hover .el-icon {
+    transform: translateX(2px);
+  }
+  
+  &.is-circle {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+  }
+  
+  &.is-round {
+    border-radius: vars.$border-radius-pill;
+  }
+  
+  // 響應式調整
+  @include mix.respond-to(sm) {
+    padding: vars.$spacing-xs vars.$spacing-md;
+    font-size: vars.$font-size-sm;
+    
+    &.el-button--large {
+      padding: vars.$spacing-sm vars.$spacing-lg;
+      font-size: vars.$font-size-base;
+    }
+    
+    &.el-button--small {
+      padding: vars.$spacing-xs vars.$spacing-sm;
+      font-size: vars.$font-size-xs;
+    }
+  }
+} 

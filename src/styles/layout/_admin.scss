@@ -1,0 +1,245 @@
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+
+// 後台管理佈局
+.admin-container {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden; // 防止水平滾動
+  
+  // 漢堡選單按鈕 (移動端)
+  .admin-hamburger {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: vars.$z-index-fixed + 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: vars.$primary-color;
+    color: vars.$bg-white;
+    border-radius: 4px;
+    box-shadow: vars.$shadow-md;
+    cursor: pointer;
+    transition: vars.$transition-base;
+    
+    &:hover {
+      background-color: vars.$primary-light;
+    }
+  }
+  
+  // 背景遮罩 (移動端)
+  .admin-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: vars.$z-index-modal-backdrop;
+    transition: opacity 0.3s ease;
+  }
+  
+  // 主佈局容器
+  .admin-layout {
+    height: 100vh;
+    width: 100%;
+  }
+  
+  // 側邊欄
+  .admin-aside {
+    background-color: vars.$bg-dark;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: vars.$z-index-fixed;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    width: 200px !important; // 強制固定寬度
+    
+    &.el-aside {
+      width: 200px !important; // 覆蓋 Element Plus 的寬度
+      
+      &.collapsed {
+        width: 64px !important;
+      }
+    }
+    
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+    }
+    
+    // 側邊欄標誌
+    .admin-logo {
+      height: 60px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: vars.$bg-white;
+      font-size: vars.$font-size-lg;
+      font-weight: vars.$font-weight-bold;
+      padding: 0 vars.$spacing-md;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    
+    // 側邊欄菜單區域
+    .el-menu {
+      flex: 1;
+      border-right: none !important;
+    }
+    
+    // 側邊欄移動端樣式
+    &.mobile {
+      transform: translateX(-100%);
+      box-shadow: none;
+      
+      &.visible {
+        transform: translateX(0);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+    }
+    
+    // 側邊欄收合按鈕
+    .admin-collapse-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+      padding: vars.$spacing-sm 0;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      
+      &:hover {
+        color: vars.$primary-color;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  
+  // 主內容容器
+  .admin-main-container {
+    flex-direction: column;
+    margin-left: 200px;
+    transition: all 0.3s ease;
+    min-height: 100vh;
+    
+    &.collapsed {
+      margin-left: 64px;
+    }
+    
+    &.mobile {
+      margin-left: 0;
+    }
+  }
+  
+  // 頭部
+  .admin-header {
+    height: 60px;
+    min-height: 60px;
+    background-color: vars.$bg-white;
+    border-bottom: 1px solid vars.$border-light;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 vars.$spacing-lg;
+    position: sticky;
+    top: 0;
+    z-index: vars.$z-index-sticky;
+    
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+    
+    .header-right {
+      display: flex;
+      align-items: center;
+      
+      .admin-user-dropdown {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: vars.$spacing-xs vars.$spacing-sm;
+        border-radius: vars.$border-radius-sm;
+        transition: background-color 0.2s ease;
+        
+        &:hover {
+          background-color: vars.$bg-light;
+        }
+        
+        .el-icon {
+          margin-left: 5px;
+        }
+      }
+    }
+    
+    @include mix.respond-to(xs) {
+      & {
+        padding: 0 vars.$spacing-lg; // 增加間距
+        min-height: 60px;
+      }
+      
+      .header-left, .header-right {
+        width: auto;
+      }
+    }
+    
+    // 移動端時，確保麵包屑有足夠空間
+    @include mix.respond-to(sm) {
+      padding-left: 70px; // 為漢堡按鈕留出空間
+    }
+  }
+  
+  // 主內容區域
+  .admin-main {
+    padding: vars.$spacing-lg;
+    background-color: vars.$bg-light;
+    flex: 1;
+    
+    @include mix.respond-to(md) {
+      & {
+        padding: vars.$spacing-md;
+      }
+    }
+    
+    @include mix.respond-to(xs) {
+      & {
+        padding: vars.$spacing-sm;
+      }
+    }
+  }
+}
+
+// 動畫
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+} 

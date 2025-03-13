@@ -1,0 +1,162 @@
+@use '../base/theme' as theme;
+@use '../base/variables' as vars;
+@use '../utils/mixins' as mix;
+
+.site-main {
+  flex: 1 0 auto;
+  padding: vars.$spacing-xl 0;
+  background-color: vars.$bg-light;
+  min-height: 70vh;
+  
+  @include mix.respond-to(md) {
+    padding: vars.$spacing-lg 0;
+  }
+  
+  @include mix.respond-to(sm) {
+    padding: vars.$spacing-md 0;
+  }
+  
+  // 頁面容器通用樣式
+  .page-container {
+    @include mix.container;
+    
+    & {
+      max-width: vars.$container-width;
+      width: 100%;
+    }
+    
+    @include mix.respond-to(md) {
+      padding-left: vars.$spacing-lg;
+      padding-right: vars.$spacing-lg;
+    }
+    
+    @include mix.respond-to(sm) {
+      padding-left: vars.$spacing-md;
+      padding-right: vars.$spacing-md;
+    }
+    
+    @include mix.respond-to(xs) {
+      padding-left: vars.$spacing-sm;
+      padding-right: vars.$spacing-sm;
+    }
+  }
+  
+  // 頁面過渡動畫
+  .fade-enter-active,
+  .fade-leave-active {
+    @include mix.transition(opacity);
+  }
+  
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+  
+  // 響應式調整
+  .el-row {
+    @include mix.respond-to(sm) {
+      $negative-spacing: calc(-1 * vars.$spacing-sm);
+      margin-left: $negative-spacing !important;
+      margin-right: $negative-spacing !important;
+    }
+    
+    @include mix.respond-to(xs) {
+      $negative-spacing: calc(-1 * vars.$spacing-xs);
+      margin-left: $negative-spacing !important;
+      margin-right: $negative-spacing !important;
+    }
+  }
+  
+  .el-col {
+    @include mix.respond-to(sm) {
+      padding-left: vars.$spacing-sm !important;
+      padding-right: vars.$spacing-sm !important;
+    }
+    
+    @include mix.respond-to(xs) {
+      padding-left: vars.$spacing-xs !important;
+      padding-right: vars.$spacing-xs !important;
+    }
+  }
+  
+  // 內容區塊通用樣式
+  .content-section {
+    margin-bottom: vars.$spacing-xl;
+    
+    @include mix.respond-to(sm) {
+      margin-bottom: vars.$spacing-lg;
+    }
+    
+    @include mix.respond-to(xs) {
+      margin-bottom: vars.$spacing-md;
+    }
+  }
+  
+  // 內容區塊標題
+  .section-title {
+    font-size: vars.$font-size-xl;
+    font-weight: vars.$font-weight-semibold;
+    margin-bottom: vars.$spacing-lg;
+    color: vars.$text-primary;
+    letter-spacing: -0.025em;
+    
+    @include mix.respond-to(sm) {
+      font-size: vars.$font-size-lg;
+      margin-bottom: vars.$spacing-md;
+    }
+  }
+  
+  // 文章列表容器
+  .articles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: vars.$spacing-lg;
+    margin-top: vars.$spacing-xl;
+    
+    @include mix.respond-to(md) {
+      gap: vars.$spacing-md;
+      margin-top: vars.$spacing-lg;
+    }
+    
+    @include mix.respond-to(sm) {
+      grid-template-columns: 1fr;
+      gap: vars.$spacing-md;
+      margin-top: vars.$spacing-md;
+    }
+  }
+  
+  // 文章詳情容器
+  .article-detail-container {
+    @include mix.container;
+    
+    & {
+      max-width: 800px;
+    }
+    
+    @include mix.respond-to(md) {
+      padding-left: vars.$spacing-md;
+      padding-right: vars.$spacing-md;
+    }
+  }
+  
+  // 水平分隔線
+  .divider {
+    height: 1px;
+    background-color: vars.$border-light;
+    margin: vars.$spacing-lg 0;
+    
+    @include mix.respond-to(sm) {
+      margin: vars.$spacing-md 0;
+    }
+  }
+  
+  // 頁面切換動畫容器
+  .view-transition-container {
+    animation: fade-in 0.3s ease-in-out;
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+} 
