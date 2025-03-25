@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "id": "1",
+      "articleId": "1",
+      "userId": "2",
+      "content": "這篇文章對於理解 Vue 3 的新特性非常有幫助！",
+      "createdAt": "2024-03-10T10:15:00Z",
+      "updatedAt": "2024-03-10T10:15:00Z",
+      "likes": 5,
+      "status": "approved"
+    },
+    {
+      "id": "2",
+      "articleId": "1",
+      "userId": "1",
+      "content": "感謝分享，特別是關於 Composition API 的部分講解得很清楚。",
+      "createdAt": "2024-03-10T11:30:00Z",
+      "updatedAt": "2024-03-10T11:30:00Z",
+      "likes": 3,
+      "status": "approved"
+    },
+    {
+      "id": "3",
+      "articleId": "2",
+      "userId": "2",
+      "content": "TypeScript 確實能大大提升代碼的可維護性，期待更多相關的文章。",
+      "createdAt": "2024-03-11T14:20:00Z",
+      "updatedAt": "2024-03-11T14:20:00Z",
+      "likes": 7,
+      "status": "approved"
+    },
+    {
+      "id": "4",
+      "articleId": "3",
+      "userId": "1",
+      "content": "前端工程化這塊講得很全面，建議可以再深入講解一下 CI/CD 的部分。",
+      "createdAt": "2024-03-12T16:45:00Z",
+      "updatedAt": "2024-03-12T16:45:00Z",
+      "likes": 4,
+      "status": "approved"
+    }
+  ]
+} 

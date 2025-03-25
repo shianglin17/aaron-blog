@@ -1,0 +1,52 @@
+{
+  "articles": [
+    {
+      "id": "1",
+      "title": "Vue.js 3.0 新特性介紹",
+      "content": "Vue.js 3.0 帶來了許多令人興奮的新特性，包括 Composition API、更好的 TypeScript 支持、更小的打包體積等...",
+      "summary": "深入探討 Vue.js 3.0 的主要特性和改進",
+      "author": "1",
+      "createdAt": "2024-03-10T08:00:00Z",
+      "updatedAt": "2024-03-10T08:00:00Z",
+      "tags": ["Vue", "JavaScript", "前端開發"],
+      "status": "published",
+      "coverImage": "https://picsum.photos/800/400"
+    },
+    {
+      "id": "2",
+      "title": "使用 TypeScript 提升代碼質量",
+      "content": "TypeScript 作為 JavaScript 的超集，為我們提供了強大的類型系統和更好的開發工具支持...",
+      "summary": "學習如何使用 TypeScript 來改善專案的可維護性",
+      "author": "1",
+      "createdAt": "2024-03-11T10:30:00Z",
+      "updatedAt": "2024-03-11T10:30:00Z",
+      "tags": ["TypeScript", "JavaScript", "程式設計"],
+      "status": "published",
+      "coverImage": "https://picsum.photos/800/400"
+    },
+    {
+      "id": "3",
+      "title": "現代化前端工程化實踐",
+      "content": "在當今的前端開發中，工程化已經成為不可或缺的一部分。本文將介紹現代前端工程化的最佳實踐...",
+      "summary": "探討前端工程化的重要性和實施方法",
+      "author": "2",
+      "createdAt": "2024-03-12T14:20:00Z",
+      "updatedAt": "2024-03-12T14:20:00Z",
+      "tags": ["前端工程化", "webpack", "工具鏈"],
+      "status": "published",
+      "coverImage": "https://picsum.photos/800/400"
+    },
+    {
+      "id": "4",
+      "title": "CSS Grid 佈局完全指南",
+      "content": "CSS Grid 為網頁佈局提供了強大而靈活的解決方案，讓我們一起深入了解如何使用它...",
+      "summary": "全面解析 CSS Grid 佈局系統的使用方法",
+      "author": "1",
+      "createdAt": "2024-03-13T09:15:00Z",
+      "updatedAt": "2024-03-13T09:15:00Z",
+      "tags": ["CSS", "網頁設計", "佈局"],
+      "status": "draft",
+      "coverImage": "https://picsum.photos/800/400"
+    }
+  ]
+} 

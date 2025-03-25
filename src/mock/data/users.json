@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "aaron",
+      "email": "aaron@example.com",
+      "role": "admin",
+      "avatar": "https://i.pravatar.cc/150?u=aaron",
+      "bio": "全端開發工程師，熱愛技術分享和寫作。",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "lastLogin": "2024-03-14T08:30:00Z",
+      "social": {
+        "github": "https://github.com/aaron",
+        "twitter": "https://twitter.com/aaron"
+      },
+      "preferences": {
+        "theme": "dark",
+        "emailNotifications": true
+      }
+    },
+    {
+      "id": "2",
+      "username": "jane_doe",
+      "email": "jane@example.com",
+      "role": "author",
+      "avatar": "https://i.pravatar.cc/150?u=jane",
+      "bio": "UI/UX 設計師，專注於用戶體驗優化。",
+      "createdAt": "2024-01-15T00:00:00Z",
+      "lastLogin": "2024-03-13T15:45:00Z",
+      "social": {
+        "github": "https://github.com/jane",
+        "dribbble": "https://dribbble.com/jane"
+      },
+      "preferences": {
+        "theme": "light",
+        "emailNotifications": false
+      }
+    }
+  ]
+} 

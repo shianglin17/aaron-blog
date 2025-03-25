@@ -9,7 +9,6 @@ interface Article {
   status: string
   author: string
   publishDate: string
-  views: number
 }
 
 const router = useRouter()
@@ -26,11 +25,11 @@ const fetchArticles = () => {
   // 這裡將來會替換為實際的API調用
   setTimeout(() => {
     articles.value = [
-      { id: 1, title: '如何使用Vue 3和TypeScript構建現代Web應用', status: 'published', author: 'Aaron', publishDate: '2023-05-15', views: 320 },
-      { id: 2, title: '響應式設計的最佳實踐', status: 'published', author: 'Aaron', publishDate: '2023-06-20', views: 215 },
-      { id: 3, title: 'Element Plus使用技巧', status: 'published', author: 'Aaron', publishDate: '2023-07-10', views: 180 },
-      { id: 4, title: 'Vue 3的新特性介紹', status: 'draft', author: 'Aaron', publishDate: '2023-08-05', views: 0 },
-      { id: 5, title: 'TypeScript入門指南', status: 'draft', author: 'Aaron', publishDate: '2023-08-15', views: 0 }
+      { id: 1, title: '如何使用Vue 3和TypeScript構建現代Web應用', status: 'published', author: 'Aaron', publishDate: '2023-05-15' },
+      { id: 2, title: '響應式設計的最佳實踐', status: 'published', author: 'Aaron', publishDate: '2023-06-20' },
+      { id: 3, title: 'Element Plus使用技巧', status: 'published', author: 'Aaron', publishDate: '2023-07-10' },
+      { id: 4, title: 'Vue 3的新特性介紹', status: 'draft', author: 'Aaron', publishDate: '2023-08-05' },
+      { id: 5, title: 'TypeScript入門指南', status: 'draft', author: 'Aaron', publishDate: '2023-08-15' }
     ]
     total.value = articles.value.length
     loading.value = false
@@ -183,7 +182,6 @@ const getStatusTag = (status: string) => {
             <span class="publish-date">{{ scope.row.publishDate }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="views" label="瀏覽量" width="90" align="center" />
         <el-table-column label="操作" min-width="200" align="center">
           <template #default="scope">
             <div class="action-buttons">

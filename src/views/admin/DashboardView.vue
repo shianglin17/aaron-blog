@@ -4,15 +4,13 @@ import { ref, onMounted } from 'vue'
 // 模擬數據
 const statistics = ref({
   totalArticles: 10,
-  totalViews: 1250,
-  totalComments: 45,
   newArticles: 3
 })
 
 const recentArticles = ref([
-  { id: 1, title: '如何使用Vue 3和TypeScript構建現代Web應用', views: 320, publishDate: '2023-05-15' },
-  { id: 2, title: '響應式設計的最佳實踐', views: 215, publishDate: '2023-06-20' },
-  { id: 3, title: 'Element Plus使用技巧', views: 180, publishDate: '2023-07-10' }
+  { id: 1, title: '如何使用Vue 3和TypeScript構建現代Web應用', publishDate: '2023-05-15' },
+  { id: 2, title: '響應式設計的最佳實踐', publishDate: '2023-06-20' },
+  { id: 3, title: 'Element Plus使用技巧', publishDate: '2023-07-10' }
 ])
 
 const loading = ref(true)
@@ -39,30 +37,6 @@ onMounted(() => {
           <div class="dashboard-stat-info">
             <div class="dashboard-stat-value">{{ statistics.totalArticles }}</div>
             <div class="dashboard-stat-label">文章總數</div>
-          </div>
-        </el-card>
-      </el-col>
-      
-      <el-col :xs="24" :sm="12" :md="6">
-        <el-card class="dashboard-stat-card">
-          <div class="dashboard-stat-icon">
-            <el-icon><View /></el-icon>
-          </div>
-          <div class="dashboard-stat-info">
-            <div class="dashboard-stat-value">{{ statistics.totalViews }}</div>
-            <div class="dashboard-stat-label">總瀏覽量</div>
-          </div>
-        </el-card>
-      </el-col>
-      
-      <el-col :xs="24" :sm="12" :md="6">
-        <el-card class="dashboard-stat-card">
-          <div class="dashboard-stat-icon">
-            <el-icon><ChatDotRound /></el-icon>
-          </div>
-          <div class="dashboard-stat-info">
-            <div class="dashboard-stat-value">{{ statistics.totalComments }}</div>
-            <div class="dashboard-stat-label">總評論數</div>
           </div>
         </el-card>
       </el-col>
@@ -118,7 +92,6 @@ onMounted(() => {
                 </el-link>
                 <div class="dashboard-article-meta">
                   <span>{{ scope.row.publishDate }}</span>
-                  <span>{{ scope.row.views }} 次瀏覽</span>
                 </div>
               </template>
             </el-table-column>

@@ -8,20 +8,37 @@
       <h1 class="article-detail-title">{{ article.title }}</h1>
       
       <div class="article-detail-meta">
-        <span class="article-detail-author">作者: {{ article.author }}</span>
-        <span class="article-detail-date">發佈於: {{ article.publishDate }}</span>
+        <div class="meta-item">
+          <el-icon><Calendar /></el-icon>
+          <span>{{ new Date(article.createdAt).toLocaleDateString() }}</span>
+        </div>
         <div class="article-detail-tags">
-          <el-tag v-for="tag in article.tags" :key="tag" size="small" class="article-detail-tag">{{ tag }}</el-tag>
+          <el-tag 
+            v-for="tagName in article.tags" 
+            :key="tagName" 
+            size="small" 
+            class="article-detail-tag"
+          >
+            {{ tagName }}
+          </el-tag>
         </div>
       </div>
       
-      <div class="article-detail-body" v-html="article.content"></div>
+      <div class="article-detail-cover" v-if="article.coverImage">
+        <img :src="article.coverImage" :alt="article.title">
+      </div>
+      
+      <div class="article-detail-summary" v-if="article.summary">
+        {{ article.summary }}
+      </div>
+      
+      <div class="article-detail-body markdown-body" v-html="renderMarkdown(article.content)"></div>
     </div>
     
     <div v-if="!loading && !article" class="article-detail-error">
       <el-result icon="error" title="文章不存在" sub-title="找不到您請求的文章">
         <template #extra>
-          <el-button type="primary" @click="$router.push('/articles')">返回文章列表</el-button>
+          <el-button type="primary" @click="router.push('/articles')">返回文章列表</el-button>
         </template>
       </el-result>
     </div>
@@ -30,73 +47,48 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
+import { Calendar } from '@element-plus/icons-vue'
+import { ArticleService } from '@/services'
+import type { Article } from '@/services'
+import { marked } from 'marked'
 
 const route = useRoute()
+const router = useRouter()
 const articleId = route.params.id as string
-const article = ref<any>(null)
+const article = ref<Article | null>(null)
 const loading = ref(true)
 
-// 模擬獲取文章詳情數據
-onMounted(async () => {
-  // 這裡將來會替換為實際的API調用
-  setTimeout(() => {
-    article.value = {
-      id: parseInt(articleId),
-      title: '如何使用Vue 3和TypeScript構建現代Web應用',
-      content: `
-        <h2>引言</h2>
-        <p>Vue 3和TypeScript的組合為開發者提供了強大的類型檢查和更好的開發體驗。本文將介紹如何使用Vue 3和TypeScript構建現代Web應用。</p>
-        
-        <h2>為什麼選擇Vue 3和TypeScript</h2>
-        <p>Vue 3帶來了許多新特性，如Composition API、更好的TypeScript支持、更小的打包體積等。TypeScript則提供了靜態類型檢查，可以在開發階段發現潛在的錯誤。</p>
-        
-        <h2>環境搭建</h2>
-        <p>首先，我們需要安裝Node.js和npm。然後，使用Vue CLI創建一個新的項目：</p>
-        <pre><code>npm init vue@latest my-project</code></pre>
-        
-        <h2>使用Composition API</h2>
-        <p>Composition API是Vue 3的一個重要特性，它允許我們更好地組織代碼，提高代碼的可重用性。</p>
-        <pre><code>
-import { ref, onMounted } from 'vue'
+// 設置 marked 選項
+marked.setOptions({
+  gfm: true, // GitHub Flavored Markdown
+  breaks: true // 轉換換行符為 <br>
+})
 
-export default {
-  setup() {
-    const count = ref(0)
-    
-    function increment() {
-      count.value++
-    }
-    
-    onMounted(() => {
-      console.log('Component mounted')
-    })
-    
-    return {
-      count,
-      increment
-    }
-  }
+// 將 Markdown 轉換為 HTML
+const renderMarkdown = (content: string) => {
+  return marked(content)
 }
-        </code></pre>
-        
-        <h2>結論</h2>
-        <p>Vue 3和TypeScript的組合為開發者提供了更好的開發體驗和更高的代碼質量。通過本文的介紹，希望能幫助你更好地理解和使用Vue 3和TypeScript。</p>
-      `,
-      author: 'Aaron',
-      publishDate: '2023-05-15',
-      tags: ['Vue', 'TypeScript', 'Web開發']
-    }
+
+onMounted(async () => {
+  try {
+    const response = await ArticleService.getArticle(articleId)
+    article.value = response.data
+  } catch (error) {
+    ElMessage.error('獲取文章詳情失敗')
+    console.error('Error fetching article:', error)
+  } finally {
     loading.value = false
-  }, 1000)
+  }
 })
 </script>
 
-<style scoped>
+<style lang="scss">
 .article-detail-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px;
 }
 
 .article-detail-title {
@@ -115,7 +107,10 @@ export default {
   gap: 15px;
 }
 
-.article-detail-author, .article-detail-date {
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   color: #909399;
   font-size: 0.9rem;
 }
@@ -123,51 +118,148 @@ export default {
 .article-detail-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 8px;
 }
 
-.article-detail-tag {
-  margin-right: 5px;
+.article-detail-cover {
+  margin-bottom: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 }
 
-.article-detail-body {
-  line-height: 1.8;
-  color: #303133;
+.article-detail-summary {
+  font-size: 1.1rem;
+  color: #606266;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  line-height: 1.6;
 }
 
-.article-detail-body :deep(h2) {
-  margin: 30px 0 15px;
-  font-size: 1.5rem;
-  color: #303133;
-}
-
-.article-detail-body :deep(p) {
-  margin-bottom: 15px;
-}
-
-.article-detail-body :deep(pre) {
-  background-color: #f5f7fa;
-  padding: 15px;
-  border-radius: 4px;
-  overflow-x: auto;
-  margin: 15px 0;
-}
-
-.article-detail-body :deep(code) {
-  font-family: monospace;
-}
-
-.article-detail-loading, .article-detail-error {
-  padding: 40px 0;
-}
-
-@media (max-width: 768px) {
-  .article-detail-container {
-    padding: 20px;
+.markdown-body {
+  color: #2c3e50;
+  line-height: 1.7;
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
   }
   
-  .article-detail-title {
-    font-size: 1.5rem;
+  h1 {
+    font-size: 2em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #eaecef;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #eaecef;
+  }
+  
+  h3 {
+    font-size: 1.25em;
+  }
+  
+  p {
+    margin-bottom: 16px;
+  }
+  
+  code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27,31,35,0.05);
+    border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  
+  pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    
+    code {
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      border: 0;
+      word-break: normal;
+      white-space: pre;
+    }
+  }
+  
+  blockquote {
+    padding: 0 1em;
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
+    margin: 0 0 16px 0;
+    
+    > :first-child {
+      margin-top: 0;
+    }
+    
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  ul, ol {
+    padding-left: 2em;
+    margin-bottom: 16px;
+  }
+  
+  li {
+    margin: 0.25em 0;
+  }
+  
+  img {
+    max-width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 3px;
+  }
+  
+  table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 16px;
+    border-spacing: 0;
+    border-collapse: collapse;
+    
+    th {
+      font-weight: 600;
+      padding: 6px 13px;
+      border: 1px solid #dfe2e5;
+    }
+    
+    td {
+      padding: 6px 13px;
+      border: 1px solid #dfe2e5;
+    }
+    
+    tr {
+      background-color: #fff;
+      border-top: 1px solid #c6cbd1;
+      
+      &:nth-child(2n) {
+        background-color: #f6f8fa;
+      }
+    }
   }
 }
 </style> 
