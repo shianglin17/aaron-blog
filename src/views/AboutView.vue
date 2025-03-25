@@ -151,12 +151,15 @@ const activeTab = ref('tech')
   min-height: 100vh;
   background-color: #f8f9fa;
   padding: 4rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .about-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .about-content {
@@ -164,6 +167,13 @@ const activeTab = ref('tech')
   border-radius: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .intro-section {
@@ -184,17 +194,40 @@ const activeTab = ref('tech')
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+
+    .profile-photo {
+      transform: scale(1.05);
+    }
+  }
 }
 
 .profile-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.02);
-  }
+  transition: transform 0.5s ease;
 }
 
 .intro-right {
@@ -223,10 +256,29 @@ const activeTab = ref('tech')
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.5px;
-    transition: transform 0.2s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
 
     &:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+      &::before {
+        transform: translateX(0);
+      }
     }
 
     &.tech {
@@ -266,25 +318,28 @@ const activeTab = ref('tech')
   }
 
   :deep(.el-tabs__item) {
-    font-size: 1.1rem;
-    padding: 0 2rem;
-    height: 50px;
-    line-height: 50px;
-    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 
-    &.is-active {
-      font-weight: 600;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #1976d2;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
     }
 
-    &:hover {
-      color: #1976d2;
+    &.is-active::after {
+      transform: scaleX(1);
     }
-  }
 
-  :deep(.el-tabs__active-bar) {
-    height: 3px;
-    border-radius: 3px;
-    background-color: #1976d2;
+    &:not(.is-active):hover::after {
+      transform: scaleX(0.5);
+    }
   }
 }
 
@@ -311,6 +366,31 @@ const activeTab = ref('tech')
     background-color: #e3f2fd;
     color: #1976d2;
     font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
 
     &.backend {
       background-color: #e8f5e9;
@@ -355,6 +435,31 @@ const activeTab = ref('tech')
     background-color: #fce4ec;
     color: #c2185b;
     font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
   }
 }
 
@@ -389,6 +494,31 @@ const activeTab = ref('tech')
     background-color: #f3e5f5;
     color: #7b1fa2;
     font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
   }
 }
 
@@ -415,12 +545,23 @@ const activeTab = ref('tech')
     font-size: 1.1rem;
     line-height: 1.6;
     color: #34495e;
+    transition: all 0.3s ease;
+    cursor: pointer;
 
     &::before {
       content: "•";
       position: absolute;
       left: 0;
       color: #3498db;
+    }
+
+    &:hover {
+      transform: translateX(10px);
+      color: #1976d2;
+
+      &::before {
+        transform: scale(1.5);
+      }
     }
   }
 }
@@ -479,6 +620,28 @@ const activeTab = ref('tech')
   :deep(.el-tabs__item) {
     padding: 0 1rem;
     font-size: 1rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-category, .music-category, .reading-category {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
   }
 }
 </style>
