@@ -1,64 +1,137 @@
 <template>
-  <div class="about-container">
-    <div class="about-content">
-      <div class="profile-section">
-        <div class="profile-image-wrapper">
-          <div class="profile-image-container">
-            <img src="@/assets/images/profile.jpg" alt="Aaron's Profile" class="profile-image" />
+  <div class="page-container">
+    <div class="about-container">
+      <div class="about-content">
+        <div class="left-section">
+          <div class="photo-container">
+            <img src="@/assets/images/profile.jpg" alt="個人照片" class="profile-photo" />
           </div>
         </div>
-        <div class="profile-info">
-          <div class="header-section">
-            <h1 class="name">AaronLei</h1>
-            <h2 class="title">後端工程師</h2>
-          </div>
-          <div class="divider"></div>
-          <p class="bio">
-            提供客製化網頁建構服務，使用 Laravel 和 PHP 做後端開發，亦有前端開發經驗。
-            若有網頁相關需求，歡迎寄信聯繫，或是 Instagram 私訊。
-          </p>
-          <div class="skills">
-            <h3>專業技能</h3>
-            <div class="skill-sections">
-              <div class="skill-section">
-                <h4>前端開發</h4>
-                <div class="skill-tags">
-                  <el-tag class="skill-tag" effect="plain">Vue.js</el-tag>
-                  <el-tag class="skill-tag" effect="plain">TypeScript</el-tag>
-                  <el-tag class="skill-tag" effect="plain">SCSS</el-tag>
-                </div>
-              </div>
-              <div class="skill-section">
-                <h4>後端技術</h4>
-                <div class="skill-tags">
-                  <el-tag class="skill-tag" effect="plain" type="success">Laravel</el-tag>
-                  <el-tag class="skill-tag" effect="plain" type="success">PHP</el-tag>
-                  <el-tag class="skill-tag" effect="plain" type="success">MySQL</el-tag>
-                  <el-tag class="skill-tag" effect="plain" type="success">MongoDB</el-tag>
-                </div>
-              </div>
-              <div class="skill-section">
-                <h4>開發工具</h4>
-                <div class="skill-tags">
-                  <el-tag class="skill-tag" effect="plain" type="warning">Git</el-tag>
-                  <el-tag class="skill-tag" effect="plain" type="warning">Docker</el-tag>
-                </div>
-              </div>
+        <div class="right-section">
+          <div class="intro-section">
+            <h1>Aaron Lin</h1>
+            <div class="identity-tags">
+              <span class="identity-tag tech">Backend Engineer</span>
+              <span class="identity-tag music">Pianist</span>
+              <span class="identity-tag writing">Writer</span>
             </div>
+            <p class="intro-text">
+              我是一名全端工程師，同時也是一位鋼琴演奏者和寫作愛好者。
+              喜歡音樂創作和閱讀，在工程與藝術之間尋找平衡。
+            </p>
           </div>
-          <div class="contact-info">
-            <h3>與我聯繫</h3>
-            <div class="contact-links">
-              <a href="mailto:your.email@example.com" class="contact-link">
-                <el-icon><Message /></el-icon>
-                <span>Email</span>
-              </a>
-              <a href="https://github.com/yourusername" target="_blank" class="contact-link">
-                <el-icon><Link /></el-icon>
-                <span>GitHub</span>
-              </a>
-            </div>
-          </div>
+
+          <el-tabs>
+            <el-tab-pane label="技術專長" name="tech">
+              <div class="tab-content">
+                <div class="skills-container">
+                  <div class="skill-category">
+                    <h3>前端開發</h3>
+                    <div class="skill-tags">
+                      <span class="skill-tag">Vue.js</span>
+                      <span class="skill-tag">TypeScript</span>
+                      <span class="skill-tag">SCSS</span>
+                    </div>
+                  </div>
+                  <div class="skill-category">
+                    <h3>後端技術</h3>
+                    <div class="skill-tags">
+                      <span class="skill-tag backend">Laravel</span>
+                      <span class="skill-tag backend">PHP</span>
+                      <span class="skill-tag backend">MySQL</span>
+                      <span class="skill-tag backend">MongoDB</span>
+                    </div>
+                  </div>
+                  <div class="skill-category">
+                    <h3>開發工具</h3>
+                    <div class="skill-tags">
+                      <span class="skill-tag tools">Git</span>
+                      <span class="skill-tag tools">Docker</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-section">
+                  <h3>我能為您提供</h3>
+                  <ul class="service-list">
+                    <li>個人網站開發：打造專屬於您的個人品牌網站</li>
+                    <li>企業形象網站：建立專業的企業官方網站</li>
+                    <li>電商網站：建置完整的線上購物平台</li>
+                    <li>網站優化：提升網站效能與使用者體驗</li>
+                    <li>技術諮詢：為您的專案提供技術建議</li>
+                  </ul>
+                </div>
+              </div>
+            </el-tab-pane>
+
+            <el-tab-pane label="音樂特質" name="music">
+              <div class="tab-content">
+                <div class="music-container">
+                  <div class="music-category">
+                    <h3>古典與流行的結合</h3>
+                    <div class="music-tags">
+                      <span class="music-tag">古典鋼琴</span>
+                      <span class="music-tag">流行音樂</span>
+                      <span class="music-tag">動漫配樂</span>
+                    </div>
+                    <p>擁有紮實的古典音樂背景，現專注於流行鋼琴演奏。特別喜歡演奏動漫曲目。</p>
+                  </div>
+                  <div class="music-category">
+                    <h3>音樂理念</h3>
+                    <div class="music-tags">
+                      <span class="music-tag">情感傳遞</span>
+                      <span class="music-tag">療癒人心</span>
+                      <span class="music-tag">分享快樂</span>
+                    </div>
+                    <p>相信音樂是傳遞快樂的最佳媒介，希望透過演奏為聽眾帶來溫暖與感動。</p>
+                  </div>
+                </div>
+                <div class="service-section">
+                  <h3>我能為您提供</h3>
+                  <ul class="service-list">
+                    <li>鋼琴演奏服務：適合婚禮、活動、派對等場合</li>
+                    <li>動漫音樂演奏：為同好會、展覽等活動帶來精彩演出</li>
+                    <li>流行音樂改編：將您喜愛的歌曲改編為鋼琴版本</li>
+                    <li>音樂教學分享：分享演奏技巧與心得</li>
+                  </ul>
+                </div>
+              </div>
+            </el-tab-pane>
+
+            <el-tab-pane label="閱讀寫作" name="reading">
+              <div class="tab-content">
+                <div class="reading-container">
+                  <div class="reading-category">
+                    <h3>閱讀興趣</h3>
+                    <div class="reading-tags">
+                      <span class="reading-tag">自我成長</span>
+                      <span class="reading-tag">心靈成長</span>
+                      <span class="reading-tag">心理學</span>
+                      <span class="reading-tag">商業管理</span>
+                    </div>
+                    <p>熱愛探索自我成長、心靈、心理、商業類書籍，透過閱讀擴展視野與思維。</p>
+                  </div>
+                  <div class="reading-category">
+                    <h3>寫作目標</h3>
+                    <div class="reading-tags">
+                      <span class="reading-tag">知識分享</span>
+                      <span class="reading-tag">經驗傳遞</span>
+                      <span class="reading-tag">思維整理</span>
+                    </div>
+                    <p>以寫作作為記錄成長、分享心得的方式，同時藉此提升表達能力。</p>
+                  </div>
+                </div>
+                <div class="service-section">
+                  <h3>我能為您提供</h3>
+                  <ul class="service-list">
+                    <li>技術文章：分享實用的開發技巧與經驗</li>
+                    <li>讀書心得：提供多元的閱讀視角與思考方向</li>
+                    <li>個人成長：分享自我提升與學習心得</li>
+                    <li>生活感悟：從日常中發現的人生智慧</li>
+                  </ul>
+                </div>
+              </div>
+            </el-tab-pane>
+          </el-tabs>
         </div>
       </div>
     </div>
@@ -66,278 +139,283 @@
 </template>
 
 <script setup lang="ts">
-import { Message, Link } from '@element-plus/icons-vue'
 </script>
 
 <style lang="scss" scoped>
+.page-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 3rem 0;
+}
+
 .about-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
-  min-height: calc(100vh - 4rem);
+  padding: 2rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.identity-tags {
   display: flex;
-  align-items: flex-start;
-}
+  gap: 1rem;
+  margin: 1rem 0;
 
-.about-content {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  width: 100%;
-  margin: 0;
-}
+  .identity-tag {
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 
-.profile-section {
-  display: flex;
-  gap: 4rem;
-  padding: 2.5rem;
-  align-items: flex-start;
-  
-  @media (max-width: 968px) {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 2rem;
-    padding: 1.5rem;
-  }
-}
+    &.tech {
+      background-color: #e3f2fd;
+      color: #1976d2;
+    }
 
-.profile-image-wrapper {
-  flex-shrink: 0;
-  padding: 1.25rem;
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  border-radius: 24px;
-  box-shadow: 
-    16px 16px 32px rgba(0, 0, 0, 0.08),
-    -8px -8px 16px rgba(255, 255, 255, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    background: linear-gradient(45deg, 
-      rgba(52, 152, 219, 0.2),
-      rgba(52, 152, 219, 0.05) 50%,
-      transparent
-    );
-    border-radius: 27px;
-    z-index: -1;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    padding: 2px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-}
+    &.music {
+      background-color: #fce4ec;
+      color: #c2185b;
+    }
 
-.profile-image-container {
-  width: 280px;
-  height: 350px;
-  border-radius: 18px;
-  overflow: hidden;
-  position: relative;
-  background: #f8f9fa;
-  transform: translateY(-2px);
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 18px;
-  }
-  
-  @media (max-width: 968px) {
-    width: 240px;
-    height: 300px;
-  }
-  
-  @media (max-width: 480px) {
-    width: 200px;
-    height: 250px;
-  }
-}
-
-.profile-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 15%;
-  transition: transform 0.4s ease;
-  transform: scale(1.02);
-  
-  &:hover {
-    transform: scale(1.06);
-  }
-}
-
-.profile-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  max-width: 800px;
-  padding-top: 1rem;
-}
-
-.header-section {
-  margin-bottom: 0.5rem;
-  position: relative;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -1rem;
-    left: 0;
-    width: 3rem;
-    height: 3px;
-    background: linear-gradient(90deg, #3498db, transparent);
-    
-    @media (max-width: 968px) {
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg, transparent, #3498db, transparent);
+    &.writing {
+      background-color: #f3e5f5;
+      color: #7b1fa2;
     }
   }
 }
 
-.name {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin: 0;
-  background: linear-gradient(120deg, #2c3e50, #3498db);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -1px;
-  
-  @media (max-width: 968px) {
-    font-size: 3rem;
-  }
-}
-
-.title {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin: 0.5rem 0 0;
-  color: #606266;
-}
-
-.divider {
-  display: none;
-}
-
-.bio {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #606266;
-  margin: 0;
-}
-
-.skills {
-  h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
+// 音樂特質樣式
+.music-container {
+  .music-category {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
     margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    h3 {
+      color: #c2185b;
+    }
+
+    p {
+      margin-top: 1rem;
+    }
+  }
+
+  .music-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 1rem 0;
+  }
+
+  .music-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: #fce4ec;
+    color: #c2185b;
+    font-size: 1rem;
+  }
+}
+
+// 閱讀寫作樣式
+.reading-container {
+  .reading-category {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    h3 {
+      color: #7b1fa2;
+    }
+
+    p {
+      margin-top: 1rem;
+    }
+  }
+
+  .reading-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 1rem 0;
+  }
+
+  .reading-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+    font-size: 1rem;
+  }
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.about-content {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.left-section {
+  flex: 0 0 280px;
+}
+
+.photo-container {
+  width: 280px;
+  height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.right-section {
+  flex: 1;
+  max-width: 800px;
+}
+
+.intro-section {
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
     color: #2c3e50;
   }
-}
 
-.skill-sections {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.skill-section {
-  h4 {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 0.8rem;
-    color: #2c3e50;
+  .intro-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #34495e;
   }
 }
 
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  
-  @media (max-width: 968px) {
-    justify-content: center;
-  }
+.tab-content {
+  padding: 1.5rem 0;
 }
 
-.skill-tag {
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
-  border-radius: 6px;
-  transition: all 0.3s;
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-}
+.content-block {
+  margin-bottom: 2rem;
 
-.contact-info {
-  margin-top: auto;
-  
   h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #34495e;
+  }
+}
+
+.skills-container {
+  .skill-category {
+    margin-bottom: 1.5rem;
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: #2c3e50;
+    }
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .skill-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: #e3f2fd;
+    color: #1976d2;
+    font-size: 1rem;
+
+    &.backend {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    &.tools {
+      background-color: #fff3e0;
+      color: #f57c00;
+    }
+  }
+}
+
+.service-section {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+
+  h3 {
+    font-size: 1.3rem;
     margin-bottom: 1rem;
     color: #2c3e50;
   }
 }
 
-.contact-links {
-  display: flex;
-  gap: 2rem;
-  
-  @media (max-width: 968px) {
-    justify-content: center;
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    position: relative;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #34495e;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #3498db;
+    }
   }
 }
 
-.contact-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: #409EFF;
-  font-size: 1.1rem;
-  transition: all 0.3s;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  
-  &:hover {
-    color: #66b1ff;
-    background: rgba(64, 158, 255, 0.1);
+@media (max-width: 1024px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .el-icon {
-    font-size: 1.3rem;
+
+  .left-section {
+    margin-bottom: 2rem;
+  }
+
+  .right-section {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 1rem;
+  }
+
+  .photo-container {
+    width: 240px;
+    height: 300px;
   }
 }
 </style>
