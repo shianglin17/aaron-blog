@@ -2,14 +2,14 @@
   <div class="page-container">
     <div class="about-container">
       <div class="about-content">
-        <div class="left-section">
-          <div class="photo-container">
-            <img src="@/assets/images/profile.jpg" alt="個人照片" class="profile-photo" />
+        <div class="intro-section">
+          <div class="intro-left">
+            <div class="photo-container">
+              <img src="@/assets/images/profile.jpg" alt="個人照片" class="profile-photo" />
+            </div>
           </div>
-        </div>
-        <div class="right-section">
-          <div class="intro-section">
-            <h1>Aaron Lin</h1>
+          <div class="intro-right">
+            <h1>Aaron Lei</h1>
             <div class="identity-tags">
               <span class="identity-tag tech">Backend Engineer</span>
               <span class="identity-tag music">Pianist</span>
@@ -20,8 +20,10 @@
               喜歡音樂創作和閱讀，在工程與藝術之間尋找平衡。
             </p>
           </div>
+        </div>
 
-          <el-tabs>
+        <div class="tabs-section">
+          <el-tabs v-model="activeTab">
             <el-tab-pane label="技術專長" name="tech">
               <div class="tab-content">
                 <div class="skills-container">
@@ -139,35 +141,93 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const activeTab = ref('tech')
 </script>
 
 <style lang="scss" scoped>
 .page-container {
   min-height: 100vh;
   background-color: #f8f9fa;
-  padding: 3rem 0;
+  padding: 4rem 0;
 }
 
 .about-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
-  background-color: white;
+  padding: 0 2rem;
+}
+
+.about-content {
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.intro-section {
+  display: flex;
+  padding: 4rem;
+  background: linear-gradient(135deg, #f6f8fc 0%, #ffffff 100%);
+  border-bottom: 1px solid #eef2f7;
+  gap: 4rem;
+}
+
+.intro-left {
+  flex: 0 0 280px;
+}
+
+.photo-container {
+  width: 280px;
+  height: 350px;
   border-radius: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.intro-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+  }
 }
 
 .identity-tags {
   display: flex;
   gap: 1rem;
-  margin: 1rem 0;
+  margin-bottom: 2rem;
 
   .identity-tag {
-    padding: 0.5rem 1.2rem;
+    padding: 0.6rem 1.4rem;
     border-radius: 25px;
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
 
     &.tech {
       background-color: #e3f2fd;
@@ -182,6 +242,84 @@
     &.writing {
       background-color: #f3e5f5;
       color: #7b1fa2;
+    }
+  }
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #546e7a;
+  max-width: 600px;
+}
+
+.tabs-section {
+  padding: 3rem 4rem;
+
+  :deep(.el-tabs__header) {
+    margin-bottom: 2rem;
+  }
+
+  :deep(.el-tabs__nav-wrap::after) {
+    height: 1px;
+    background-color: #eef2f7;
+  }
+
+  :deep(.el-tabs__item) {
+    font-size: 1.1rem;
+    padding: 0 2rem;
+    height: 50px;
+    line-height: 50px;
+    transition: all 0.3s ease;
+
+    &.is-active {
+      font-weight: 600;
+    }
+
+    &:hover {
+      color: #1976d2;
+    }
+  }
+
+  :deep(.el-tabs__active-bar) {
+    height: 3px;
+    border-radius: 3px;
+    background-color: #1976d2;
+  }
+}
+
+.skills-container {
+  .skill-category {
+    margin-bottom: 1.5rem;
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: #2c3e50;
+    }
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .skill-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: #e3f2fd;
+    color: #1976d2;
+    font-size: 1rem;
+
+    &.backend {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    &.tools {
+      background-color: #fff3e0;
+      color: #f57c00;
     }
   }
 }
@@ -254,112 +392,6 @@
   }
 }
 
-.about-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.about-content {
-  display: flex;
-  gap: 3rem;
-  align-items: flex-start;
-}
-
-.left-section {
-  flex: 0 0 280px;
-}
-
-.photo-container {
-  width: 280px;
-  height: 350px;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.profile-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.right-section {
-  flex: 1;
-  max-width: 800px;
-}
-
-.intro-section {
-  margin-bottom: 2rem;
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #2c3e50;
-  }
-
-  .intro-text {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #34495e;
-  }
-}
-
-.tab-content {
-  padding: 1.5rem 0;
-}
-
-.content-block {
-  margin-bottom: 2rem;
-
-  h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #2c3e50;
-  }
-
-  p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #34495e;
-  }
-}
-
-.skills-container {
-  .skill-category {
-    margin-bottom: 1.5rem;
-
-    h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-      color: #2c3e50;
-    }
-  }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-  }
-
-  .skill-tag {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    background-color: #e3f2fd;
-    color: #1976d2;
-    font-size: 1rem;
-
-    &.backend {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-    }
-
-    &.tools {
-      background-color: #fff3e0;
-      color: #f57c00;
-    }
-  }
-}
-
 .service-section {
   margin-top: 2.5rem;
   padding-top: 2rem;
@@ -394,28 +426,59 @@
 }
 
 @media (max-width: 1024px) {
-  .about-content {
+  .intro-section {
     flex-direction: column;
     align-items: center;
+    padding: 3rem 2rem;
+    gap: 2rem;
   }
 
-  .left-section {
-    margin-bottom: 2rem;
+  .intro-right {
+    text-align: center;
+
+    h1 {
+      font-size: 2.5rem;
+    }
   }
 
-  .right-section {
-    padding: 0 1rem;
+  .identity-tags {
+    justify-content: center;
+  }
+
+  .intro-text {
+    margin: 0 auto;
+  }
+
+  .tabs-section {
+    padding: 2rem;
   }
 }
 
 @media (max-width: 768px) {
+  .page-container {
+    padding: 2rem 0;
+  }
+
   .about-container {
-    padding: 1rem;
+    padding: 0 1rem;
   }
 
   .photo-container {
     width: 240px;
     height: 300px;
+  }
+
+  .intro-section {
+    padding: 2rem 1rem;
+  }
+
+  .tabs-section {
+    padding: 1.5rem;
+  }
+
+  :deep(.el-tabs__item) {
+    padding: 0 1rem;
+    font-size: 1rem;
   }
 }
 </style>
