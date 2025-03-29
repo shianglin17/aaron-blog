@@ -50,8 +50,8 @@ import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { Calendar } from '@element-plus/icons-vue'
-import { ArticleService } from '@/services'
-import type { Article } from '@/services'
+import { articlesApi } from '@/services/api/articles'
+import type { Article } from '@/types/article'
 import { marked } from 'marked'
 
 const route = useRoute()
@@ -73,8 +73,7 @@ const renderMarkdown = (content: string) => {
 
 onMounted(async () => {
   try {
-    const response = await ArticleService.getArticle(articleId)
-    article.value = response.data
+    article.value = await articlesApi.getArticle(articleId)
   } catch (error) {
     ElMessage.error('獲取文章詳情失敗')
     console.error('Error fetching article:', error)
@@ -198,7 +197,6 @@ onMounted(async () => {
       background-color: transparent;
       border: 0;
       word-break: normal;
-      white-space: pre;
     }
   }
   
