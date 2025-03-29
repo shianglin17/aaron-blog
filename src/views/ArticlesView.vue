@@ -69,8 +69,8 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { Calendar, ArrowRight } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
-import { ArticleService } from '@/services'
-import type { Article } from '@/services'
+import { articlesApi } from '@/services/api/articles'
+import type { Article } from '@/types/article'
 
 const router = useRouter()
 const articles = ref<Article[]>([])
@@ -87,10 +87,10 @@ onMounted(() => {
 const fetchArticles = async () => {
   try {
     loading.value = true
-    const response = await ArticleService.getArticles(currentPage.value, pageSize.value)
-    articles.value = response.data.items
-    total.value = response.data.total
-    totalPages.value = response.data.totalPages
+    const response = await articlesApi.getArticles(currentPage.value, pageSize.value)
+    articles.value = response.data
+    total.value = response.pagination.total
+    totalPages.value = response.pagination.totalPages
   } catch (error) {
     console.error('獲取文章列表失敗:', error)
     ElMessage.error('獲取文章列表失敗')
