@@ -1,0 +1,11 @@
+{
+  "id": "1",
+  "title": "更新後的文章標題",
+  "summary": "更新後的摘要",
+  "content": "更新後的內容",
+  "category": "tech",
+  "tags": ["更新", "標籤"],
+  "coverImage": "https://example.com/images/updated-article.jpg",
+  "createdAt": "2024-03-15T08:00:00Z",
+  "updatedAt": "2024-03-16T10:30:00Z"
+} 

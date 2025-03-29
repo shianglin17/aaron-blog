@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "title": "Vue 3 組合式 API 入門指南",
+      "summary": "了解 Vue 3 組合式 API 的基礎概念和使用方法",
+      "content": "Vue 3 的組合式 API 是一個革命性的特性，它讓我們能夠更好地組織和重用程式碼...",
+      "category": "tech",
+      "tags": ["Vue", "JavaScript", "前端開發"],
+      "coverImage": "https://example.com/images/vue3.jpg",
+      "createdAt": "2024-03-15T08:00:00Z",
+      "updatedAt": "2024-03-15T08:00:00Z"
+    },
+    {
+      "id": "2",
+      "title": "2024 年最值得學習的程式語言",
+      "summary": "探討當前最受歡迎和最具發展潛力的程式語言",
+      "content": "隨著技術的快速發展，選擇合適的程式語言變得越來越重要...",
+      "category": "tech",
+      "tags": ["程式語言", "職涯發展", "技術趨勢"],
+      "coverImage": "https://example.com/images/programming.jpg",
+      "createdAt": "2024-03-14T10:30:00Z",
+      "updatedAt": "2024-03-14T10:30:00Z"
+    },
+    {
+      "id": "3",
+      "title": "我的日本自由行規劃",
+      "summary": "分享我的日本自由行經驗和規劃技巧",
+      "content": "這次的日本自由行讓我學到了很多關於行程規劃的經驗...",
+      "category": "life",
+      "tags": ["旅遊", "日本", "生活體驗"],
+      "coverImage": "https://example.com/images/japan.jpg",
+      "createdAt": "2024-03-13T15:45:00Z",
+      "updatedAt": "2024-03-13T15:45:00Z"
+    }
+  ],
+  "pagination": {
+    "total": 50,
+    "page": 1,
+    "limit": 10,
+    "totalPages": 5
+  }
+} 

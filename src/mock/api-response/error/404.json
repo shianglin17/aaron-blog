@@ -1,0 +1,7 @@
+{
+  "status": 404,
+  "message": "找不到資源",
+  "errors": {
+    "article": "找不到指定的文章"
+  }
+} 

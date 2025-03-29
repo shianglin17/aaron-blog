@@ -10,6 +10,7 @@
       "updatedAt": "2024-03-10T08:00:00Z",
       "tags": ["Vue", "JavaScript", "前端開發"],
       "status": "published",
+      "category": "tech",
       "coverImage": "https://picsum.photos/800/400"
     },
     {
@@ -22,7 +23,47 @@
       "updatedAt": "2024-03-11T10:30:00Z",
       "tags": ["TypeScript", "JavaScript", "程式設計"],
       "status": "published",
+      "category": "tech",
       "coverImage": "https://picsum.photos/800/400"
+    },
+    {
+      "id": "5",
+      "title": "《原子習慣》- 細微改變帶來巨大成就",
+      "content": "在《原子習慣》中，James Clear 深入探討了習慣養成的科學原理，並提供了實用的策略來建立好習慣、打破壞習慣。這本書最吸引人的地方在於它將複雜的行為改變理論簡化為可操作的小步驟，強調 1% 的微小進步累積起來可以帶來驚人的改變...",
+      "summary": "一本關於如何建立持久性好習慣的實用指南",
+      "author": "1",
+      "createdAt": "2024-03-20T08:00:00Z",
+      "updatedAt": "2024-03-20T08:00:00Z",
+      "tags": ["自我提升", "心理學", "習慣養成"],
+      "status": "published",
+      "category": "book-review",
+      "coverImage": "https://s.yimg.com/ut/api/res/1.2/6GAJdrG8aBisaR9VJzGuww--~B/YXBwaWQ9eXR3bWFsbDtjYz0zMTUzNjAwMDtoPTYwMDtxPTEwMDt3PTYwMA--/https://s.yimg.com/fy/1138/item/p0082263492348-item-8d3bxf4x0896x0896-m.jpg"
+    },
+    {
+      "id": "6",
+      "title": "《被討厭的勇氣》- 阿德勒心理學的人生啟發",
+      "content": "《被討厭的勇氣》以對話體的形式，生動地闡述了阿德勒心理學的核心理念。書中探討了人際關係、自我接納、目標設定等重要議題，特別強調了「活在當下」的重要性，以及如何擺脫過去的束縛，找到真正的人生自由...",
+      "summary": "一場關於幸福人生的哲學對話",
+      "author": "1",
+      "createdAt": "2024-03-21T09:00:00Z",
+      "updatedAt": "2024-03-21T09:00:00Z",
+      "tags": ["心理學", "哲學", "自我成長"],
+      "status": "published",
+      "category": "book-review",
+      "coverImage": ""
+    },
+    {
+      "id": "7",
+      "title": "《Deep Work》- 深度工作的藝術",
+      "content": "在這個注意力分散的時代，Cal Newport 的《Deep Work》提供了一個重要的洞見：能夠專注進行深度工作的能力，將成為未來最寶貴的技能之一。書中不僅解釋了為什麼深度工作如此重要，還提供了具體的方法來培養這種能力...",
+      "summary": "在分心時代培養專注力的實用指南",
+      "author": "1",
+      "createdAt": "2024-03-22T10:00:00Z",
+      "updatedAt": "2024-03-22T10:00:00Z",
+      "tags": ["生產力", "工作方法", "自我提升"],
+      "status": "published",
+      "category": "book-review",
+      "coverImage": "https://www.books.com.tw/img/001/077/36/0010773615.jpg"
     },
     {
       "id": "3",

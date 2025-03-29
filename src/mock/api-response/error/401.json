@@ -1,0 +1,7 @@
+{
+  "status": 401,
+  "message": "未認證或認證已過期",
+  "errors": {
+    "token": "請提供有效的認證 token"
+  }
+} 

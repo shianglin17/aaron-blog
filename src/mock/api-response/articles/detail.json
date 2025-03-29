@@ -1,0 +1,11 @@
+{
+  "id": "1",
+  "title": "Vue 3 組合式 API 入門指南",
+  "summary": "了解 Vue 3 組合式 API 的基礎概念和使用方法",
+  "content": "Vue 3 的組合式 API 是一個革命性的特性，它讓我們能夠更好地組織和重用程式碼。\n\n## 什麼是組合式 API？\n\n組合式 API (Composition API) 是 Vue 3 中新增的一個重要特性，它提供了一種更靈活的方式來組織組件的邏輯。不同於 Vue 2 的選項式 API，組合式 API 允許我們將相關的程式碼組織在一起，使得程式碼更容易維護和重用。\n\n## 基本使用方法\n\n```javascript\nimport { ref, onMounted } from 'vue'\n\nexport default {\n  setup() {\n    const count = ref(0)\n    \n    function increment() {\n      count.value++\n    }\n    \n    onMounted(() => {\n      console.log('組件已掛載')\n    })\n    \n    return {\n      count,\n      increment\n    }\n  }\n}\n```\n\n## 主要優點\n\n1. 更好的程式碼組織\n2. 更強的類型推導\n3. 更小的打包體積\n4. 更好的程式碼重用\n\n## 結論\n\n組合式 API 為 Vue 開發帶來了更多的可能性，雖然需要一些時間來適應新的開發方式，但長期來看，它能幫助我們寫出更好的程式碼。",
+  "category": "tech",
+  "tags": ["Vue", "JavaScript", "前端開發"],
+  "coverImage": "https://example.com/images/vue3.jpg",
+  "createdAt": "2024-03-15T08:00:00Z",
+  "updatedAt": "2024-03-15T08:00:00Z"
+} 

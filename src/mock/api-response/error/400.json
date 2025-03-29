@@ -1,0 +1,9 @@
+{
+  "status": 400,
+  "message": "請求格式錯誤",
+  "errors": {
+    "title": "標題不能為空",
+    "category": "文章類型必須是 tech、life 或 book-review",
+    "tags": "標籤必須是陣列格式"
+  }
+} 
