@@ -237,11 +237,10 @@ const activeTab = ref('tech')
   justify-content: center;
 
   h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.5px;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 1rem;
   }
 }
 
@@ -306,40 +305,60 @@ const activeTab = ref('tech')
 }
 
 .tabs-section {
-  padding: 3rem 4rem;
+  padding: 2rem;
 
   :deep(.el-tabs__header) {
-    margin-bottom: 2rem;
+    margin: 0 0 2rem 0;
+    border: none;
   }
 
   :deep(.el-tabs__nav-wrap::after) {
-    height: 1px;
-    background-color: #eef2f7;
+    display: none;
+  }
+
+  :deep(.el-tabs__nav) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    position: relative;
+    padding: 0 1rem;
   }
 
   :deep(.el-tabs__item) {
-    position: relative;
-    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    font-size: 0.95rem;
+    color: #94a3b8;
+    transition: color 0.2s ease;
+    border: none;
+    margin: 0;
+    font-weight: normal;
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: #1976d2;
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
+    &.is-active {
+      color: #1e293b;
+      font-weight: 500;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #1e293b;
+      }
     }
 
-    &.is-active::after {
-      transform: scaleX(1);
+    &:hover:not(.is-active) {
+      color: #475569;
     }
+  }
 
-    &:not(.is-active):hover::after {
-      transform: scaleX(0.5);
-    }
+  :deep(.el-tabs__active-bar) {
+    display: none;
   }
 }
 
@@ -411,14 +430,17 @@ const activeTab = ref('tech')
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f5f9;
 
     h3 {
-      color: #c2185b;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
     }
 
     p {
       margin-top: 1rem;
+      line-height: 1.6;
     }
   }
 
@@ -454,7 +476,7 @@ const activeTab = ref('tech')
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
       &::after {
         transform: scaleX(1);
@@ -470,14 +492,17 @@ const activeTab = ref('tech')
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f5f9;
 
     h3 {
-      color: #7b1fa2;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
     }
 
     p {
       margin-top: 1rem;
+      line-height: 1.6;
     }
   }
 
@@ -513,7 +538,7 @@ const activeTab = ref('tech')
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
       &::after {
         transform: scaleX(1);
@@ -633,53 +658,19 @@ const activeTab = ref('tech')
   }
 
   .tabs-section {
-    padding: 1rem;
+    padding: 1.5rem 0.5rem;
+
+    :deep(.el-tabs__nav) {
+      padding: 0;
+    }
 
     :deep(.el-tabs__item) {
-      padding: 0 0.8rem;
-      font-size: 0.95rem;
-    }
-  }
-
-  .skill-tags, .music-tags, .reading-tags {
-    gap: 0.6rem;
-
-    .skill-tag, .music-tag, .reading-tag {
-      padding: 0.4rem 0.8rem;
       font-size: 0.9rem;
     }
   }
 
-  .service-section {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-
-    h3 {
-      font-size: 1.2rem;
-    }
-  }
-
-  .service-list {
-    li {
-      font-size: 1rem;
-      padding: 0.4rem 0 0.4rem 1.2rem;
-    }
-  }
-
-  .music-container, .reading-container {
-    .music-category, .reading-category {
-      padding: 1.2rem;
-      margin-bottom: 1rem;
-
-      h3 {
-        font-size: 1.2rem;
-      }
-
-      p {
-        font-size: 0.95rem;
-        margin-top: 0.8rem;
-      }
-    }
+  .tab-content {
+    margin-top: 1.5rem;
   }
 }
 
@@ -716,15 +707,9 @@ const activeTab = ref('tech')
   }
 
   .tabs-section {
-    :deep(.el-tabs__item) {
-      padding: 0 0.6rem;
-      font-size: 0.9rem;
-    }
-  }
+    padding: 1rem 0;
 
-  .skill-tags, .music-tags, .reading-tags {
-    .skill-tag, .music-tag, .reading-tag {
-      padding: 0.3rem 0.7rem;
+    :deep(.el-tabs__item) {
       font-size: 0.85rem;
     }
   }
@@ -755,5 +740,9 @@ const activeTab = ref('tech')
       animation-delay: #{$i * 0.1}s;
     }
   }
+}
+
+.tab-content {
+  padding: 0 1rem;
 }
 </style>
