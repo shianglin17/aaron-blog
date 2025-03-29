@@ -237,10 +237,11 @@ const activeTab = ref('tech')
   justify-content: center;
 
   h1 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: #1e293b;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
   }
 }
 
@@ -322,7 +323,7 @@ const activeTab = ref('tech')
     justify-content: space-between;
     border: none;
     position: relative;
-    padding: 0 1rem;
+    padding: 0;
   }
 
   :deep(.el-tabs__item) {
@@ -335,6 +336,8 @@ const activeTab = ref('tech')
     border: none;
     margin: 0;
     font-weight: normal;
+    flex: 1;
+    text-align: center;
 
     &.is-active {
       color: #1e293b;
@@ -344,21 +347,14 @@ const activeTab = ref('tech')
       &::after {
         content: '';
         position: absolute;
-        bottom: -1px;
-        left: 0;
-        width: 100%;
+        bottom: 0;
+        left: 10%;
+        width: 80%;
         height: 2px;
-        background-color: #1e293b;
+        background-color: currentColor;
+        border-radius: 2px;
       }
     }
-
-    &:hover:not(.is-active) {
-      color: #475569;
-    }
-  }
-
-  :deep(.el-tabs__active-bar) {
-    display: none;
   }
 }
 
@@ -430,17 +426,14 @@ const activeTab = ref('tech')
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f1f5f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
     h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
+      color: #c2185b;
     }
 
     p {
       margin-top: 1rem;
-      line-height: 1.6;
     }
   }
 
@@ -476,7 +469,7 @@ const activeTab = ref('tech')
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
       &::after {
         transform: scaleX(1);
@@ -492,17 +485,14 @@ const activeTab = ref('tech')
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f1f5f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
     h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
+      color: #7b1fa2;
     }
 
     p {
       margin-top: 1rem;
-      line-height: 1.6;
     }
   }
 
@@ -538,7 +528,7 @@ const activeTab = ref('tech')
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
       &::after {
         transform: scaleX(1);
@@ -627,6 +617,10 @@ const activeTab = ref('tech')
 
   .tabs-section {
     padding: 1.5rem;
+
+    :deep(.el-tabs__item) {
+      font-size: 0.9rem;
+    }
   }
 }
 
@@ -658,19 +652,71 @@ const activeTab = ref('tech')
   }
 
   .tabs-section {
-    padding: 1.5rem 0.5rem;
+    padding: 1rem;
+
+    :deep(.el-tabs__header) {
+      margin: 0 0 1.5rem 0;
+    }
 
     :deep(.el-tabs__nav) {
-      padding: 0;
+      gap: 0.5rem;
     }
 
     :deep(.el-tabs__item) {
+      height: 36px;
+      line-height: 36px;
+      font-size: 0.85rem;
+      padding: 0 0.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &.is-active::after {
+        left: 15%;
+        width: 70%;
+      }
+    }
+  }
+
+  .skill-tags, .music-tags, .reading-tags {
+    gap: 0.6rem;
+
+    .skill-tag, .music-tag, .reading-tag {
+      padding: 0.4rem 0.8rem;
       font-size: 0.9rem;
     }
   }
 
-  .tab-content {
-    margin-top: 1.5rem;
+  .service-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .service-list {
+    li {
+      font-size: 1rem;
+      padding: 0.4rem 0 0.4rem 1.2rem;
+    }
+  }
+
+  .music-container, .reading-container {
+    .music-category, .reading-category {
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+
+      h3 {
+        font-size: 1.2rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+        margin-top: 0.8rem;
+      }
+    }
   }
 }
 
@@ -707,9 +753,17 @@ const activeTab = ref('tech')
   }
 
   .tabs-section {
-    padding: 1rem 0;
+    padding: 0.75rem;
 
     :deep(.el-tabs__item) {
+      font-size: 0.8rem;
+      padding: 0 0.25rem;
+    }
+  }
+
+  .skill-tags, .music-tags, .reading-tags {
+    .skill-tag, .music-tag, .reading-tag {
+      padding: 0.3rem 0.7rem;
       font-size: 0.85rem;
     }
   }
@@ -740,9 +794,5 @@ const activeTab = ref('tech')
       animation-delay: #{$i * 0.1}s;
     }
   }
-}
-
-.tab-content {
-  padding: 0 1rem;
 }
 </style>
